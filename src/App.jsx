@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import './App.css';
 import Navbar from './components/Navbar';
 import JuegoColores from './components/JuegoColores';
+import JuegoPreguntas from './components/JuegoPreguntas';
 
 function App() {
   const [level, setLevel] = useState(generateColors());
@@ -33,7 +34,7 @@ function App() {
   }, [levelCounter]);
 
   useEffect(() => {
-    if (levelCounterQ === 3) {
+    if (levelCounterQ === 20) {
       setWinQ(true);
     }
   }, [levelCounterQ]);
@@ -44,9 +45,9 @@ function App() {
       setGameOver(true);
     } else {
       setLevel([]);
+      setLevelCounter((prevLevelCounter) => prevLevelCounter + 1);
       setTimeout(() => {
         setLevel(generateColors());
-        setLevelCounter((prevLevelCounter) => prevLevelCounter + 1);
       }, 2000);
     }
   };
@@ -70,6 +71,7 @@ function App() {
 
   const juegoPreguntas = (selectedAnswer) => {
     const currentQuestion = questions[currentQuestionIndex];
+  
     if (selectedAnswer === currentQuestion.respuestaCorrecta) {
       setLevelCounterQ((prevLevelCounter) => prevLevelCounter + 1);
       if (currentQuestionIndex + 1 < questions.length) {
@@ -79,15 +81,7 @@ function App() {
       setGameOverQ(true);
     }
   };
-
-  const reiniciarJuego = () => {
-    setGameOverQ(false);
-    setLevelCounterQ(1);
-    setCurrentQuestionIndex(0);
-    setWinQ(false);
-  };
-
-  // Función para mezclar aleatoriamente un arreglo
+  
   const shuffleArray = (array) => {
     const shuffledArray = [...array];
     for (let i = shuffledArray.length - 1; i > 0; i--) {
@@ -96,14 +90,19 @@ function App() {
     }
     return shuffledArray;
   };
+  
+  const reiniciarJuego = () => {
+    setGameOverQ(false);
+    setLevelCounterQ(1);
+    setCurrentQuestionIndex(0);
+    setWinQ(false);
+    const shuffledQuestions = shuffleArray(questions);
+    setQuestions(shuffledQuestions);
+  };
 
   return (
     <>
       <Navbar />
-      <div className="flex flex-col items-center mt-10">
-        <h1 className="mb-5 text-center">JUEGO DE COLORES</h1>
-        <h1 className="text-center">SELECCIONA EL COLOR DIFERENTE</h1>
-      </div>
       <JuegoColores
         gameOver={gameOver}
         setLevel={setLevel}
@@ -116,56 +115,15 @@ function App() {
         win={win}
         setWin={setWin}
       />
-      <div className="flex flex-col items-center mt-10">
-        <h1 className="mb-5 text-center">JUEGO DE PREGUNTAS</h1>
-        <h1 className="text-center">SELECCIONA LA RESPUESTA CORRECTA</h1>
-        {gameOverQ ? (
-          <div className="flex flex-col justify-around items-center mt-10 w-full h-96">
-            <h1 className="text-center">Juego Finalizado</h1>
-            <button onClick={reiniciarJuego}>Reiniciar Juego</button>
-          </div>
-        ) : winQ ? (
-          <div className="flex flex-col justify-around items-center mt-10 w-full h-96 ">
-            <h1 className="text-center">Felicitaciones</h1>
-            <button onClick={reiniciarJuego}>Jugar nuevamente</button>
-          </div>
-        ) : (
-          questions.slice(currentQuestionIndex, currentQuestionIndex + 1).map((question) => (
-            <div key={question.id} className="flex flex-col justify-around items-center mt-10 border w-full h-96">
-              <h1>{question.pregunta}</h1>
-              <div className="grid grid-cols-2 gap-48 text-center">
-                <h1
-                  className="cursor-pointer"
-                  onClick={() => juegoPreguntas(question.respuestaCorrecta)}
-                >
-                  {question.respuestaCorrecta}
-                </h1>
-                <h1
-                  className="cursor-pointer"
-                  onClick={() => juegoPreguntas(question.respuestasIncorrectas[0])}
-                >
-                  {question.respuestasIncorrectas[0]}
-                </h1>
-                <h1
-                  className="cursor-pointer"
-                  onClick={() => juegoPreguntas(question.respuestasIncorrectas[1])}
-                >
-                  {question.respuestasIncorrectas[1]}
-                </h1>
-                <h1
-                  className="cursor-pointer"
-                  onClick={() => juegoPreguntas(question.respuestasIncorrectas[2])}
-                >
-                  {question.respuestasIncorrectas[2]}
-                </h1>
-              </div>
-            </div>
-          ))
-        )}
-      </div>
-      <div className="flex justify-center">
-        <p className="text-lg">Nivel: {levelCounterQ}</p>
-      </div>
+      <JuegoPreguntas
+        gameOverQ={gameOverQ}
+        reiniciarJuego={reiniciarJuego}
+        questions={questions}
+        currentQuestionIndex={currentQuestionIndex}
+        juegoPreguntas={juegoPreguntas}
+        levelCounterQ={levelCounterQ}
+        winQ={winQ}
+      />
     </>
   );
 }

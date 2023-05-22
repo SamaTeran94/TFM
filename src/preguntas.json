@@ -1,63 +1,192 @@
 [
-    {
-      "id": 1,
-      "pregunta": "¿En qué año se llevó a cabo el Mundial de Fútbol en México?",
-      "respuestaCorrecta": "1986",
-      "respuestasIncorrectas": [1980, 1990, 1982]
-    },
-    {
-      "id": 2,
-      "pregunta": "¿Cuál fue el primer presidente de Estados Unidos?",
-      "respuestaCorrecta": "George Washington",
-      "respuestasIncorrectas": ["Abraham Lincoln", "Thomas Jefferson", "John F. Kennedy"]
-    },
-    {
-      "id": 3,
-      "pregunta": "¿Quién pintó La Noche Estrellada?",
-      "respuestaCorrecta": "Vincent van Gogh",
-      "respuestasIncorrectas": ["Pablo Picasso", "Leonardo da Vinci", "Claude Monet"]
-    },
-    {
-      "id": 4,
-      "pregunta": "¿Cuál es el país más grande de América Latina en términos de superficie?",
-      "respuestaCorrecta": "Brasil",
-      "respuestasIncorrectas": ["Argentina", "Peru", "Chile"]
-    },
-    {
-      "id": 5,
-      "pregunta": "¿En qué país se encuentra la famosa ciudad de Machu Picchu?",
-      "respuestaCorrecta": " Perú",
-      "respuestasIncorrectas": ["Ecuador", "Brasil", "Venezuela"]
-    },
-    {
-      "id": 6,
-      "pregunta": "¿Cuál es el país más pequeño de América Latina?",
-      "respuestaCorrecta": "El Salvador",
-      "respuestasIncorrectas": ["Nicaragua", "Panama", "Uruguay"]
-    },
-    {
-      "id": 7,
-      "pregunta": "¿En qué país se encuentra el famoso glaciar Perito Moreno?",
-      "respuestaCorrecta": "Argentina",
-      "respuestasIncorrectas": ["Nicaragua", "Chile", "Uruguay"]
-    },
-    {
-      "id": 8,
-      "pregunta": "¿Cuál fue el año de la independencia de Estados Unidos?",
-      "respuestaCorrecta": "1776",
-      "respuestasIncorrectas": ["1886", "1720", "1770"]
-    },
-    {
-      "id": 9,
-      "pregunta": "¿Quién fue el primer presidente de Ecuador?",
-      "respuestaCorrecta": "Juan José Flores",
-      "respuestasIncorrectas": ["Vicente Rocafuerte", "Gabriel García Moreno", "Guillermo Lasso"]
-    },
-    {
-      "id": 10,
-      "pregunta": "¿Cuál fue el país sede de la Copa Mundial de Fútbol de 2014?",
-      "respuestaCorrecta": " Brasil",
-      "respuestasIncorrectas": ["Alemania", "Rusia", "Francia"]
-    }
-  ]
-  
+  {
+    "id": 1,
+    "pregunta": "¿En qué año se llevó a cabo el Mundial de Fútbol en México?",
+    "respuestaCorrecta": "1986",
+    "respuestasIncorrectas": [
+      1980,
+      1990,
+      1982
+    ]
+  },
+  {
+    "id": 2,
+    "pregunta": "¿Cuál fue el primer presidente de Estados Unidos?",
+    "respuestaCorrecta": "George Washington",
+    "respuestasIncorrectas": [
+      "Abraham Lincoln",
+      "Thomas Jefferson",
+      "John F. Kennedy"
+    ]
+  },
+  {
+    "id": 3,
+    "pregunta": "¿Quién pintó La Noche Estrellada?",
+    "respuestaCorrecta": "Vincent van Gogh",
+    "respuestasIncorrectas": [
+      "Pablo Picasso",
+      "Leonardo da Vinci",
+      "Claude Monet"
+    ]
+  },
+  {
+    "id": 4,
+    "pregunta": "¿Cuál es el país más grande de América Latina en términos de superficie?",
+    "respuestaCorrecta": "Brasil",
+    "respuestasIncorrectas": [
+      "Argentina",
+      "Peru",
+      "Chile"
+    ]
+  },
+  {
+    "id": 5,
+    "pregunta": "¿En qué país se encuentra la famosa ciudad de Machu Picchu?",
+    "respuestaCorrecta": " Perú",
+    "respuestasIncorrectas": [
+      "Ecuador",
+      "Brasil",
+      "Venezuela"
+    ]
+  },
+  {
+    "id": 6,
+    "pregunta": "¿Cuál es el país más pequeño de América Latina?",
+    "respuestaCorrecta": "El Salvador",
+    "respuestasIncorrectas": [
+      "Nicaragua",
+      "Panama",
+      "Uruguay"
+    ]
+  },
+  {
+    "id": 7,
+    "pregunta": "¿En qué país se encuentra el famoso glaciar Perito Moreno?",
+    "respuestaCorrecta": "Argentina",
+    "respuestasIncorrectas": [
+      "Nicaragua",
+      "Chile",
+      "Uruguay"
+    ]
+  },
+  {
+    "id": 8,
+    "pregunta": "¿Cuál fue el año de la independencia de Estados Unidos?",
+    "respuestaCorrecta": "1776",
+    "respuestasIncorrectas": [
+      "1886",
+      "1720",
+      "1770"
+    ]
+  },
+  {
+    "id": 9,
+    "pregunta": "¿Quién fue el primer presidente de Ecuador?",
+    "respuestaCorrecta": "Juan José Flores",
+    "respuestasIncorrectas": [
+      "Vicente Rocafuerte",
+      "Gabriel García Moreno",
+      "Guillermo Lasso"
+    ]
+  },
+  {
+    "id": 10,
+    "pregunta": "¿Cuál fue el país sede de la Copa Mundial de Fútbol de 2014?",
+    "respuestaCorrecta": " Brasil",
+    "respuestasIncorrectas": [
+      "Alemania",
+      "Rusia",
+      "Francia"
+    ]
+  },
+  {
+    "id": 11,
+    "pregunta": "¿Cuáles son los 5 tipos de sabores primarios",
+    "respuestaCorrecta": "Dulce, Amargo, Acido, Salado, Umami",
+    "respuestasIncorrectas": [
+      "Picante, Amargo, Acido, Salado",
+      "Dulce, Amargo, Acido, Salado",
+      "Agridulce, Acido, Salado, Picante"
+    ]
+  },
+  {
+    "id": 12,
+    "pregunta": "¿Quién escribió la Odisea?",
+    "respuestaCorrecta": "Homero",
+    "respuestasIncorrectas": [
+      "Dante",
+      "Garcia Marquez",
+      "Julio Cortázar"
+    ]
+  },
+  {
+    "id": 13,
+    "pregunta": "¿Cúal es el rio más largo del mundo?",
+    "respuestaCorrecta": "Amazonas",
+    "respuestasIncorrectas": [
+      "Nilo",
+      "Danubio",
+      "Misisipi"
+    ]
+  },
+  {
+    "id": 14,
+    "pregunta": "¿Qué cantidad de huesos tiene el cuerpo humano?",
+    "respuestaCorrecta": "206",
+    "respuestasIncorrectas": [
+      "200",
+      "300",
+      "306"
+    ]
+  },
+  {
+    "id": 15,
+    "pregunta": "¿Quién es el autor de el Quijote",
+    "respuestaCorrecta": "Miguel de Cervantes",
+    "respuestasIncorrectas": [
+      "García Lorca",
+      "Gustavo Bécquer",
+      "Alan Poe"
+    ]
+  },
+  {
+    "id": 16,
+    "pregunta": "¿Cúal es el disco mas vendido de la historia",
+    "respuestaCorrecta": "Thriller-Michael Jackson",
+    "respuestasIncorrectas": [
+      "Back in Black-ACDC",
+      "The dark side of the moon-Pink Floyd",
+      "Saturday Night Fever-BEEGEES"
+    ]
+  },
+  {
+    "id": 17,
+    "pregunta": "¿En que lugar del cuerpo se produce la insulina?",
+    "respuestaCorrecta": "Páncreas",
+    "respuestasIncorrectas": [
+      "Hígado",
+      "Riñon",
+      "Estomago"
+    ]
+  },
+  {
+    "id": 18,
+    "pregunta": "¿Cuál es el metal mas caro del mundo?",
+    "respuestaCorrecta": "Rodio",
+    "respuestasIncorrectas": [
+      "Oro",
+      "Plata",
+      "Paladio"
+    ]
+  },
+  {
+    "id": 19,
+    "pregunta": "¿Cuál es el elemento más ligero de la tabla periódica?",
+    "respuestaCorrecta": "Hidrógeno",
+    "respuestasIncorrectas": [
+      "Helio",
+      "Nitrógeno",
+      "Flúor"
+    ]
+  }
+]
