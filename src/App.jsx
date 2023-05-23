@@ -28,13 +28,13 @@ function App() {
   }, []);
 
   useEffect(() => {
-    if (levelCounter === 15) {
+    if (levelCounter === 3) {
       setWin(true);
     }
   }, [levelCounter]);
 
   useEffect(() => {
-    if (levelCounterQ === 20) {
+    if (levelCounterQ === 3) {
       setWinQ(true);
     }
   }, [levelCounterQ]);

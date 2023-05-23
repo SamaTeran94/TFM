@@ -3,31 +3,31 @@
 const JuegoColores = ({ gameOver, setLevel, generateColors, setGameOver, setLevelCounter, level, juegoColores, levelCounter, win, setWin }) => {
   return (
     <>
-      <div className="flex flex-col items-center mt-10 h-screen" id='colores_id'>
-        <h1 className="mb-5 text-center">JUEGO DE COLORES</h1>
-        <h1 className="text-center">SELECCIONA EL COLOR DIFERENTE</h1>
-
+      <div className="flex flex-col items-center place-content-center content-center justify-evenly h-screen bg-coloresbg" id='colores_id'>
+        {gameOver || win ? null : <h1 className="text-center bg-colorestxbg text-3xl">Juego De Colores</h1>}
+        {gameOver || win ? null : <h1 className="text-center bg-colorestxbg text-3xl">Selecciona El Color Diferente</h1>}
         <div className=" flex justify-center">
           <div className=" max-w-2/4 w-full md:max-w-2/3 lg:max-w-1/2 flex justify-center">
             {gameOver ? (
+              // Código cuando gameOver es true
               <div className=" flex flex-col justify-center text-center">
-                <h1 className="text-xl">Juego Finalizado</h1>
+                <h1 className="text-3xl bg-colorestxbg">Juego Finalizado</h1>
                 <button
-                  className="mt-4 py-2 px-4 bg-blue-500 text-white rounded-md"
+                  className="mt-4 py-2 text-center bg-blue-500 text-white text-3xl rounded-md"
                   onClick={() => {
                     setLevel(generateColors());
                     setGameOver(false);
                     setLevelCounter(1);
-                  }}
-                >
+                  }}>
                   Jugar Nuevamente
                 </button>
               </div>
             ) : win ? (
+              // Código cuando win es true
               <div className="flex flex-col justify-center text-center">
-                <h1 className="text-xl">Felicitaciones</h1>
+                <h1 className="text-3xl bg-colorestxbg">Felicitaciones, Ganaste El Juego!</h1>
                 <button
-                  className="mt-4 py-2 px-4 bg-blue-500 text-white rounded-md"
+                  className="mt-4 py-2 bg-blue-500 text-white text-3xl rounded-md"
                   onClick={() => {
                     setLevel(generateColors());
                     setLevelCounter(1);
@@ -35,15 +35,16 @@ const JuegoColores = ({ gameOver, setLevel, generateColors, setGameOver, setLeve
                     setWin(false);
                   }}
                 >
-                  Jugar Nuevamente
+                  Reiniciar Juego
                 </button>
               </div>
             ) : (
+              // Código cuando gameOver y win son false
               <div className="grid grid-cols-3 grid-rows-3 gap-4">
                 {level.map((mem, index) => (
                   <div
                     key={index}
-                    className="w-20 h-20 rounded-full m-10"
+                    className="w-20 h-20 rounded-full m-10 cursor-pointer"
                     style={{ backgroundColor: mem.color }}
                     onClick={() => juegoColores(mem)}
                   ></div>
@@ -53,12 +54,11 @@ const JuegoColores = ({ gameOver, setLevel, generateColors, setGameOver, setLeve
           </div>
         </div>
         <div className="flex justify-center">
-          <p className="text-lg">Nivel: {levelCounter}</p>
+          <p className="bg-colorestxbg text-3xl">Nivel: {levelCounter}</p>
         </div>
       </div>
     </>
   );
 };
 
-
-export default JuegoColores
+export default JuegoColores;
