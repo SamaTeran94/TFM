@@ -3,7 +3,7 @@
 const JuegoColores = ({ gameOver, setLevel, generateColors, setGameOver, setLevelCounter, level, juegoColores, levelCounter, win, setWin }) => {
   return (
     <>
-      <div className="flex flex-col items-center place-content-center content-center justify-evenly h-screen bg-coloresbg" id='colores_id'>
+      <div className="flex flex-col items-center place-content-center content-center justify-evenly bg-coloresbg h-fit" id='colores_id'>
         {gameOver || win ? null : <h1 className="text-center bg-colorestxbg text-3xl">Juego De Colores</h1>}
         {gameOver || win ? null : <h1 className="text-center bg-colorestxbg text-3xl">Selecciona El Color Diferente</h1>}
         <div className=" flex justify-center">
@@ -54,7 +54,18 @@ const JuegoColores = ({ gameOver, setLevel, generateColors, setGameOver, setLeve
           </div>
         </div>
         <div className="flex justify-center">
-          <p className="bg-colorestxbg text-3xl">Nivel: {levelCounter}</p>
+          {levelCounter > 0 && levelCounter <= 5 && (
+            <p className="bg-colorestxbg text-3xl">Nivel Inicial: {levelCounter}</p>
+          )}
+          {levelCounter > 5 && levelCounter <= 10 && (
+            <p className="bg-colorestxbg text-3xl">Nivel Facil: {levelCounter}</p>
+          )}
+          {levelCounter > 10 && levelCounter <= 15 && (
+            <p className="bg-colorestxbg text-3xl">Nivel Intermedio: {levelCounter}</p>
+          )}
+          {levelCounter > 15 && (
+            <p className="bg-colorestxbg text-3xl">Nivel Dificil: {levelCounter}</p>
+          )}
         </div>
       </div>
     </>

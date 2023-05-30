@@ -3,9 +3,11 @@ import './App.css';
 import Navbar from './components/Navbar';
 import JuegoColores from './components/JuegoColores';
 import JuegoPreguntas from './components/JuegoPreguntas';
+import { Route, Routes } from 'react-router-dom';
+import Home from './routes/Home';
 
 function App() {
-  const [level, setLevel] = useState(generateColors());
+  const [level, setLevel] = useState(generateColors(1));
   const [gameOver, setGameOver] = useState(false);
   const [win, setWin] = useState(false);
   const [levelCounter, setLevelCounter] = useState(1);
@@ -14,6 +16,7 @@ function App() {
   const [levelCounterQ, setLevelCounterQ] = useState(1);
   const [gameOverQ, setGameOverQ] = useState(false);
   const [winQ, setWinQ] = useState(false);
+  const [shuffledAnswers, setShuffledAnswers] = useState([]);
 
   useEffect(() => {
     fetch('/src/preguntas.json')
@@ -28,13 +31,22 @@ function App() {
   }, []);
 
   useEffect(() => {
-    if (levelCounter === 3) {
+    if (questions.length > 0 && currentQuestionIndex >= 0 && currentQuestionIndex < questions.length) {
+      const currentQuestion = questions[currentQuestionIndex];
+      const answers = [currentQuestion.respuestaCorrecta, ...currentQuestion.respuestasIncorrectas];
+      const shuffledArray = shuffleArray(answers);
+      setShuffledAnswers(shuffledArray);
+    }
+  }, [questions, currentQuestionIndex]);
+
+  useEffect(() => {
+    if (levelCounter === 20) {
       setWin(true);
     }
   }, [levelCounter]);
 
   useEffect(() => {
-    if (levelCounterQ === 3) {
+    if (levelCounterQ === 20) {
       setWinQ(true);
     }
   }, [levelCounterQ]);
@@ -47,31 +59,49 @@ function App() {
       setLevel([]);
       setLevelCounter((prevLevelCounter) => prevLevelCounter + 1);
       setTimeout(() => {
-        setLevel(generateColors());
+        setLevel(generateColors(levelCounter + 1));
       }, 2000);
     }
   };
 
-  function generateColors() {
+  function generateColors(levelCounter) {
     const colors = [];
-    const variation = 32;
+    let variationAmount = 75;
+
+
+    // Ajustar la variación del color según el nivel actual
+    if (levelCounter > 5 && levelCounter <= 10) {
+      variationAmount = 50; // Mayor variación en niveles 6-10
+
+    } else if (levelCounter > 10 && levelCounter <= 15) {
+      variationAmount = 30; // Mayor variación en niveles 11-15
+
+    } else if (levelCounter > 15) {
+      variationAmount = 20; // Mayor variación en niveles 16 en adelante
+
+    }
+
     const baseR = Math.floor(Math.random() * 256);
     const baseG = Math.floor(Math.random() * 256);
     const baseB = Math.floor(Math.random() * 256);
     const baseColor = `rgb(${baseR}, ${baseG}, ${baseB})`;
+
+
     for (let i = 1; i <= 8; i++) {
       colors.push({ id: i, color: baseColor });
     }
-    const modifiedR = baseR > 127 ? baseR - variation : baseR + variation;
+
+    const modifiedR = baseR > 127 ? baseR - variationAmount : baseR + variationAmount;
     const modifiedColor = `rgb(${modifiedR}, ${baseG}, ${baseB})`;
     const randomIndex = Math.floor(Math.random() * 8);
     colors.splice(randomIndex, 0, { id: 9, color: modifiedColor });
+
     return colors;
   }
 
   const juegoPreguntas = (selectedAnswer) => {
     const currentQuestion = questions[currentQuestionIndex];
-  
+
     if (selectedAnswer === currentQuestion.respuestaCorrecta) {
       setLevelCounterQ((prevLevelCounter) => prevLevelCounter + 1);
       if (currentQuestionIndex + 1 < questions.length) {
@@ -81,7 +111,7 @@ function App() {
       setGameOverQ(true);
     }
   };
-  
+
   const shuffleArray = (array) => {
     const shuffledArray = [...array];
     for (let i = shuffledArray.length - 1; i > 0; i--) {
@@ -90,7 +120,7 @@ function App() {
     }
     return shuffledArray;
   };
-  
+
   const reiniciarJuego = () => {
     setGameOverQ(false);
     setLevelCounterQ(1);
@@ -102,28 +132,45 @@ function App() {
 
   return (
     <>
+
       <Navbar />
-      <JuegoColores
-        gameOver={gameOver}
-        setLevel={setLevel}
-        generateColors={generateColors}
-        setGameOver={setGameOver}
-        setLevelCounter={setLevelCounter}
-        level={level}
-        juegoColores={juegoColores}
-        levelCounter={levelCounter}
-        win={win}
-        setWin={setWin}
-      />
-      <JuegoPreguntas
-        gameOverQ={gameOverQ}
-        reiniciarJuego={reiniciarJuego}
-        questions={questions}
-        currentQuestionIndex={currentQuestionIndex}
-        juegoPreguntas={juegoPreguntas}
-        levelCounterQ={levelCounterQ}
-        winQ={winQ}
-      />
+      <Routes>
+        <Route path='/' element={<Home />}>
+          <Route
+            path='colores'
+            element={
+              <JuegoColores
+                gameOver={gameOver}
+                setLevel={setLevel}
+                generateColors={generateColors}
+                setGameOver={setGameOver}
+                setLevelCounter={setLevelCounter}
+                level={level}
+                juegoColores={juegoColores}
+                levelCounter={levelCounter}
+                win={win}
+                setWin={setWin}
+              />
+            }
+          />
+          <Route
+            path='preguntas'
+            element={
+              <JuegoPreguntas
+                gameOverQ={gameOverQ}
+                reiniciarJuego={reiniciarJuego}
+                questions={questions}
+                currentQuestionIndex={currentQuestionIndex}
+                juegoPreguntas={juegoPreguntas}
+                levelCounterQ={levelCounterQ}
+                winQ={winQ}
+                shuffledAnswers={shuffledAnswers}
+              />
+            }
+          />
+        </Route>
+      </Routes>
+
     </>
   );
 }

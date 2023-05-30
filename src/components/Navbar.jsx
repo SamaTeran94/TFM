@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { Link } from 'react-router-dom';
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -8,19 +9,14 @@ const Navbar = () => {
   };
 
   return (
-    <nav className="bg-navbar">
+    <nav className="bg-navbar ">
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between h-16">
           <div className="flex items-center">
-          <a href="#">
-          <img src="/src/assets/LOGO-UNIR.png" width={200} height={200} alt="Image" />
-        </a>        
+            <Link><img src="/src/assets/LOGO-UNIR.png" width={200} height={200} alt="Image" /></Link>
           </div>
           <div className="hidden md:flex md:space-x-4">
-            <a href="/#colores_id" className="text-gray-700 text-xl">Juego Colores</a>
-            <a href="/#preguntas_id" className="text-gray-700 text-xl">Juego Preguntas</a>
-            <a href="#" className="text-gray-700 text-xl">Nosotros</a>
-            <a href="#" className="text-gray-700 text-xl">Nosotros</a>
+            <a href="/#colores_id" className="text-gray-700 text-xl">TFM Diseño y Desarrollo Front End</a>
           </div>
           <div className="md:hidden">
             <button

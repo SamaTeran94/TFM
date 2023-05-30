@@ -1,5 +1,4 @@
 /* eslint-disable react/prop-types */
-import { useState, useEffect } from 'react';
 
 const JuegoPreguntas = ({
   gameOverQ,
@@ -8,28 +7,10 @@ const JuegoPreguntas = ({
   currentQuestionIndex,
   juegoPreguntas,
   levelCounterQ,
-  winQ
+  winQ,
+  shuffledAnswers
 }) => {
-  const [shuffledAnswers, setShuffledAnswers] = useState([]);
-
-  useEffect(() => {
-    if (questions.length > 0 && currentQuestionIndex >= 0 && currentQuestionIndex < questions.length) {
-      const currentQuestion = questions[currentQuestionIndex];
-      const answers = [currentQuestion.respuestaCorrecta, ...currentQuestion.respuestasIncorrectas];
-      const shuffledArray = shuffleArray(answers);
-      setShuffledAnswers(shuffledArray);
-    }
-  }, [questions, currentQuestionIndex]);
-
-  const shuffleArray = (array) => {
-    const shuffledArray = [...array];
-    for (let i = shuffledArray.length - 1; i > 0; i--) {
-      const j = Math.floor(Math.random() * (i + 1));
-      [shuffledArray[i], shuffledArray[j]] = [shuffledArray[j], shuffledArray[i]];
-    }
-    return shuffledArray;
-  };
-
+  
   return (
     <div className="flex flex-col items-center place-content-center content-center justify-evenly h-screen bg-preguntasbg" id="preguntas_id">
       <div className="flex flex-col">
