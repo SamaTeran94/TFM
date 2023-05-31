@@ -1,7 +1,8 @@
+/* eslint-disable react/prop-types */
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 
-const Navbar = () => {
+const Navbar = ({ setHome }) => {
   const [isOpen, setIsOpen] = useState(false);
 
   const toggleMenu = () => {
@@ -9,14 +10,24 @@ const Navbar = () => {
   };
 
   return (
+
     <nav className="bg-navbar ">
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between h-16">
           <div className="flex items-center">
-            <Link><img src="/src/assets/LOGO-UNIR.png" width={200} height={200} alt="Image" /></Link>
+            <Link to='/'><img src="/src/assets/LOGO-UNIR.png" width={200} height={200} alt="Image" /></Link>
           </div>
           <div className="hidden md:flex md:space-x-4">
-            <a href="/#colores_id" className="text-gray-700 text-xl">TFM Diseño y Desarrollo Front End</a>
+            <Link to='colores' onClick={() => setHome(false)} className="text-gray-700 text-xl">Juego Colores</Link>
+          </div>
+          <div className="hidden md:flex md:space-x-4">
+            <Link to='preguntas' onClick={() => setHome(false)} className="text-gray-700 text-xl">Juego Preguntas</Link>
+          </div>
+          <div className="hidden md:flex md:space-x-4">
+            <Link to='memoria' onClick={() => setHome(false)} className="text-gray-700 text-xl">Juego Memoria</Link>
+          </div>
+          <div className="hidden md:flex md:space-x-4">
+            <Link to='' onClick={() => setHome(false)} className="text-gray-700 text-xl">Nosotros</Link>
           </div>
           <div className="md:hidden">
             <button
@@ -36,10 +47,10 @@ const Navbar = () => {
         </div>
         {isOpen && (
           <div className="mt-2">
-            <a href="/#colores_id" className="block px-4 py-2 text-gray-700">Juego Colores</a>
-            <a href="/#preguntas_id" className="block px-4 py-2 text-gray-700">Juego Preguntas</a>
-            <a href="#" className="block px-4 py-2 text-gray-700">Nosotros</a>
-            <a href="#" className="block px-4 py-2 text-gray-700">Nosotros</a>
+            <Link to='colores' onClick={() => setHome(false)} className="text-gray-700 text-xl">Juego Colores</Link>
+            <Link to='preguntas' onClick={() => setHome(false)} className="text-gray-700 text-xl">Juego Preguntas</Link>
+            <Link to='memoria' onClick={() => setHome(false)} className="text-gray-700 text-xl">Juego Memoria</Link>
+            <Link to='' onClick={() => setHome(false)} className="text-gray-700 text-xl">Nosotros</Link>
           </div>
         )}
       </div>

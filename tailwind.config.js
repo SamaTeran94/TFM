@@ -12,6 +12,10 @@ export default {
         colorestxbg: '#F5F5F5',
         preguntasbg: '#556B2F'
       },
+      transform: {
+        'y-90': 'rotateY(90deg)',
+        'y-0': 'rotateY(0deg)',
+      },
     },
   },
 }
