@@ -6,19 +6,19 @@ const JuegoMemoria = ({ shuffleCards, cards, handleChoice, choiceOne, choiceTwo,
 
     return (
         <>
-            <div className="h-screen flex justify-center">
-                <div className="w-3/4 flex flex-col items-center justify-center"> {/* Added flex and flex-col classes */}
-                    <div className=" flex justify-between w-3/4">
-                        <button onClick={shuffleCards}>New Game</button>
+            <div className=" flex justify-center bg-red-200 pb-5">
+                <div className="w-full flex flex-col items-center justify-center">
+                    <div className=" flex flex-col items-center justify-center lg:flex-row lg:justify-between w-full px-10 py-5">
+                        <button className="text-3xl" onClick={shuffleCards}>New Game</button>
                         {cardsMatched ? (
-                            <h1>Felicidades! Encontraste todas las cartas!, te tomo {turns} turnos</h1>
+                            <h1 className="text-3xl">Felicidades! Encontraste todas las cartas!, te tomo {turns} turnos</h1>
                         ) : (
-                            ""
+                            <h1 className="text-3xl">Juego de Memoria, encuentra los pares</h1>
                         )}
-                        <h1>Turnos: {turns}</h1>
+                        <h1 className="text-3xl">Turnos: {turns}</h1>
                     </div>
-                    <div className="mt-8"> {/* Added margin-top */}
-                        <div className="grid grid-cols-4 gap-5 justify-items-center">
+                    <div className="pt-8">
+                        <div className="grid grid-cols-2 sm:grid-cols-4 gap-5 justify-items-center">
                             {cards.map((card) => (
                                 <SingleCard
                                     key={card.id}

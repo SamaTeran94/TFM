@@ -12,7 +12,7 @@ const SingleCard = ({ card, handleChoice, flipped, disabled }) => {
         <div className="relative">
             <div>
                 <div
-                    className="absolute block w-full rounded-md bg-white"
+                    className="absolute block w-full rounded-md bg-white border-2 border-black"
                     style={{
                         transform: `rotateY(${flipped ? '0deg' : '90deg'})`,
                         transitionDelay: `(${flipped ? '0.2s' : ''})`,
@@ -23,7 +23,7 @@ const SingleCard = ({ card, handleChoice, flipped, disabled }) => {
                     {card.icon}
                 </div>
                 <div
-                    className="block w-36 h-36 rounded-md bg-black" onClick={handleClick}
+                    className="block w-36 h-36 rounded-md border-2 border-white bg-black" onClick={handleClick}
                     style={{
                         transform: `rotateY(${flipped ? '90deg' : '0deg'})`,
                         transitionDelay: `(${flipped ? '0s' : '0.2s'})`,

@@ -6,6 +6,7 @@ import JuegoPreguntas from './components/JuegoPreguntas';
 import { Route, Routes } from 'react-router-dom';
 import Home from './routes/Home';
 import JuegoMemoria from './components/JuegoMemoria';
+import Navbar from './components/Navbar';
 
 function App() {
   // Juego Colores
@@ -61,7 +62,7 @@ function App() {
 
   // Comprueba si se ha alcanzado el nivel máximo en el juego de preguntas
   useEffect(() => {
-    if (levelCounterQ === 20) {
+    if (levelCounterQ === 15) {
       setWinQ(true);
     }
   }, [levelCounterQ]);
@@ -105,9 +106,7 @@ function App() {
     } else {
       setLevel([]);
       setLevelCounter((prevLevelCounter) => prevLevelCounter + 1);
-      setTimeout(() => {
-        setLevel(generateColors(levelCounter + 1));
-      }, 2000);
+      setLevel(generateColors(levelCounter + 1));
     }
   };
 
@@ -221,7 +220,8 @@ function App() {
     <>
 
       <Routes>
-        <Route path='/' element={<Home />}>
+        <Route path='/' element={<Navbar />}>
+          <Route index element={<Home />} />
           <Route
             path='colores'
             element={

@@ -101,7 +101,7 @@
   },
   {
     "id": 11,
-    "pregunta": "¿Cuáles son los 5 tipos de sabores primarios",
+    "pregunta": "¿Cuáles son los tipos de sabores primarios",
     "respuestaCorrecta": "Dulce, Amargo, Acido, Salado, Umami",
     "respuestasIncorrectas": [
       "Picante, Amargo, Acido, Salado",
@@ -122,9 +122,9 @@
   {
     "id": 13,
     "pregunta": "¿Cúal es el rio más largo del mundo?",
-    "respuestaCorrecta": "Amazonas",
+    "respuestaCorrecta": "Nilo",
     "respuestasIncorrectas": [
-      "Nilo",
+      "Amazonas",
       "Danubio",
       "Misisipi"
     ]
@@ -187,6 +187,166 @@
       "Helio",
       "Nitrógeno",
       "Flúor"
+    ]
+  },
+  {
+    "id": 20,
+    "pregunta": " ¿Cuál es el resultado de la operación 5 + 8 * 2?",
+    "respuestaCorrecta": "21",
+    "respuestasIncorrectas": [
+      "22",
+      "26",
+      "30"
+    ]
+  },
+  {
+    "id": 21,
+    "pregunta": "¿Cuál es el nombre del famoso compositor alemán conocido por sus sinfonías y conciertos para piano?",
+    "respuestaCorrecta": "Beethoven",
+    "respuestasIncorrectas": [
+      "Bach",
+      "Mozart",
+      "Tchaikovsky"
+    ]
+  },
+  {
+    "id": 22,
+    "pregunta": " ¿Cuál es el valor de π (pi) aproximado?",
+    "respuestaCorrecta": "3.1416",
+    "respuestasIncorrectas": [
+      "3.1415",
+      "3.1216",
+      "2.1416"
+    ]
+  },
+  {
+    "id": 23,
+    "pregunta": "¿Cuál es el órgano más grande del cuerpo humano?",
+    "respuestaCorrecta": "Piel",
+    "respuestasIncorrectas": [
+      "Corazón",
+      "Riñon",
+      "Intestino"
+    ]
+  },
+  {
+    "id": 24,
+    "pregunta": "¿Quién dirigió la película Pulp Fiction lanzada en 1994?",
+    "respuestaCorrecta": "Tarantino",
+    "respuestasIncorrectas": [
+      "Hitchcock",
+      "Spielberg",
+      "Eastwood"
+    ]
+  },
+  {
+    "id": 25,
+    "pregunta": "¿Cúal es un número primo?",
+    "respuestaCorrecta": "31",
+    "respuestasIncorrectas": [
+      "10",
+      "27",
+      "50"
+    ]
+  },
+  {
+    "id": 26,
+    "pregunta": " ¿Cuál es el resultado de la operación matemática 8 ÷ (2 + 2) × 3?",
+    "respuestaCorrecta": "3",
+    "respuestasIncorrectas": [
+      "1",
+      "4",
+      "6"
+    ]
+  },
+  {
+    "id": 27,
+    "pregunta": ": ¿Cuál fue la película ganadora del premio Óscar a la Mejor Película en el año 2020?",
+    "respuestaCorrecta": "Parasite",
+    "respuestasIncorrectas": [
+      "12 años de esclavitud",
+      "Nomadland",
+      "El lobo de Wall Street"
+    ]
+  },
+  {
+    "id": 28,
+    "pregunta": "¿Quién es el autor y compositor de la canción Imagine?",
+    "respuestaCorrecta": "John Lennon",
+    "respuestasIncorrectas": [
+      "Paul McCartney",
+      "Freddie Mercury",
+      "Brian May"
+    ]
+  },
+  {
+    "id": 29,
+    "pregunta": "¿Quién pintó el famoso cuadro La última cena?",
+    "respuestaCorrecta": "Leonardo da Vinci",
+    "respuestasIncorrectas": [
+      "Rembrandt",
+      "Diego Velázquez",
+      "Salvador Dalí"
+    ]
+  },
+  {
+    "id": 30,
+    "pregunta": "¿Cuál es la capital de Australia?",
+    "respuestaCorrecta": "Canberra",
+    "respuestasIncorrectas": [
+      "El Cairo",
+      "Wellington",
+      "Kingston"
+    ]
+  },
+  {
+    "id": 31,
+    "pregunta": "¿Quién fue el primer hombre en pisar la luna?",
+    "respuestaCorrecta": "Neil Armstrong",
+    "respuestasIncorrectas": [
+      "Buzz Aldrin",
+      "Charles Conrad",
+      "Buzz Lightyear"
+    ]
+  },
+  {
+    "id": 32,
+    "pregunta": "¿Cuál es la capital de Australia?",
+    "respuestaCorrecta": "Canberra",
+    "respuestasIncorrectas": [
+      "El Cairo",
+      "Wellington",
+      "Kingston"
+    ]
+  },
+  {
+    "id": 33,
+    "pregunta": "¿¿Cuál es el nombre del primer álbum de estudio de la banda británica The Beatles?",
+    "respuestaCorrecta": "Please Please Me",
+    "respuestasIncorrectas": [
+      "Abbey Road",
+      "Revolver",
+      "A Night At The Opera"
+    ]
+  },
+  {
+    "id": 34,
+    "pregunta": "Pregunta: ¿Cuál es el nombre del famoso pintor español conocido por su estilo surrealista?",
+    "respuestaCorrecta": "Salvador Dalí",
+    "respuestasIncorrectas": [
+      "El Greco",
+      "Diego Velázquez",
+      "Oswaldo Guayasamín"
+    ]
+  },
+  {
+    "id": 35,
+    "pregunta": "¿Quién es el autor de la serie de libros Harry Potter?",
+    "respuestaCorrecta": "J.K. Rowling",
+    "respuestasIncorrectas": [
+      "C. S. Lewis",
+      "Elisabeth Badinter",
+      "Stephen King"
     ]
   }
 ]
