@@ -1,11 +1,50 @@
 /* eslint-disable react/prop-types */
 
-const JuegoColores = ({ gameOver, setLevel, generateColors, setGameOver, setLevelCounter, level, juegoColores, levelCounter, win, setWin }) => {
+const JuegoColores = ({ gameOver,
+  setLevel,
+  generateColors,
+  setGameOver,
+  setLevelCounter,
+  level,
+  juegoColores,
+  levelCounter,
+  win,
+  setWin,
+  timer,
+  setTimer,
+  gameStarted,
+  setGameStarted
+}) => {
+
   return (
     <>
       <div className="flex flex-col items-center place-content-center content-center justify-evenly bg-coloresbg h-screen" >
         {gameOver || win ? null : <h1 className="text-center bg-colorestxbg text-3xl">Juego De Colores</h1>}
         {gameOver || win ? null : <h1 className="text-center bg-colorestxbg text-3xl">Selecciona El Color Diferente</h1>}
+        <div className="flex justify-around w-full">
+          <button className="bg-colorestxbg text-3xl" onClick={() => {
+            setLevel(generateColors());
+            setGameOver(false);
+            setLevelCounter(1);
+            setTimer(25);
+            setGameStarted(true);
+          }}>Empezar Juego</button>
+          {gameStarted && (<h1 className="bg-colorestxbg text-3xl">Tiempo Restante: {timer}</h1>)}
+          <div className="">
+            {levelCounter > 0 && levelCounter <= 5 && (
+              <p className="bg-colorestxbg text-3xl">Nivel Inicial: {levelCounter}</p>
+            )}
+            {levelCounter > 5 && levelCounter <= 10 && (
+              <p className="bg-colorestxbg text-3xl">Nivel Facil: {levelCounter}</p>
+            )}
+            {levelCounter > 10 && levelCounter <= 15 && (
+              <p className="bg-colorestxbg text-3xl">Nivel Intermedio: {levelCounter}</p>
+            )}
+            {levelCounter > 15 && (
+              <p className="bg-colorestxbg text-3xl">Nivel Dificil: {levelCounter}</p>
+            )}
+          </div>
+        </div>
         <div className=" flex justify-center">
           <div className=" max-w-2/4 w-full md:max-w-2/3 lg:max-w-1/2 flex justify-center">
             {gameOver ? (
@@ -42,30 +81,18 @@ const JuegoColores = ({ gameOver, setLevel, generateColors, setGameOver, setLeve
               // Código cuando gameOver y win son false
               <div className="grid grid-cols-3 grid-rows-3 gap-4">
                 {level.map((mem, index) => (
-                  <div
+                  <button
+                    disabled={!gameStarted}
                     key={index}
-                    className="w-20 h-20 rounded-full m-10 cursor-pointer"
+                    className={`${!gameStarted ? 'cursor-default w-20  h-20 rounded-full m-10' : 'w-20 h-20 rounded-full m-10 cursor-pointer'
+                      } border-2 border-white`}
                     style={{ backgroundColor: mem.color }}
                     onClick={() => juegoColores(mem)}
-                  ></div>
+                  ></button>
                 ))}
               </div>
             )}
           </div>
-        </div>
-        <div className="flex justify-center">
-          {levelCounter > 0 && levelCounter <= 5 && (
-            <p className="bg-colorestxbg text-3xl">Nivel Inicial: {levelCounter}</p>
-          )}
-          {levelCounter > 5 && levelCounter <= 10 && (
-            <p className="bg-colorestxbg text-3xl">Nivel Facil: {levelCounter}</p>
-          )}
-          {levelCounter > 10 && levelCounter <= 15 && (
-            <p className="bg-colorestxbg text-3xl">Nivel Intermedio: {levelCounter}</p>
-          )}
-          {levelCounter > 15 && (
-            <p className="bg-colorestxbg text-3xl">Nivel Dificil: {levelCounter}</p>
-          )}
         </div>
       </div>
     </>

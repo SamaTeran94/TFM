@@ -2,7 +2,7 @@
   {
     "id": 1,
     "pregunta": "¿En qué año se llevó a cabo el Mundial de Fútbol en México?",
-    "respuestaCorrecta": "1986",
+    "respuestaCorrecta": 1986,
     "respuestasIncorrectas": [
       1980,
       1990,
@@ -42,7 +42,7 @@
   {
     "id": 5,
     "pregunta": "¿En qué país se encuentra la famosa ciudad de Machu Picchu?",
-    "respuestaCorrecta": " Perú",
+    "respuestaCorrecta": "Perú",
     "respuestasIncorrectas": [
       "Ecuador",
       "Brasil",
@@ -101,7 +101,7 @@
   },
   {
     "id": 11,
-    "pregunta": "¿Cuáles son los tipos de sabores primarios",
+    "pregunta": "¿Cuáles son los tipos de sabores primarios?",
     "respuestaCorrecta": "Dulce, Amargo, Acido, Salado, Umami",
     "respuestasIncorrectas": [
       "Picante, Amargo, Acido, Salado",
@@ -141,7 +141,7 @@
   },
   {
     "id": 15,
-    "pregunta": "¿Quién es el autor de el Quijote",
+    "pregunta": "¿Quién es el autor de el Quijote?",
     "respuestaCorrecta": "Miguel de Cervantes",
     "respuestasIncorrectas": [
       "García Lorca",
@@ -151,7 +151,7 @@
   },
   {
     "id": 16,
-    "pregunta": "¿Cúal es el disco mas vendido de la historia",
+    "pregunta": "¿Cúal es el disco mas vendido de la historia?",
     "respuestaCorrecta": "Thriller-Michael Jackson",
     "respuestasIncorrectas": [
       "Back in Black-ACDC",
