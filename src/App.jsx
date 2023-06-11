@@ -267,14 +267,14 @@ function App() {
   // JUEGO MEMORIA
 
   const cardImages = [
-    { icon: <FaBlackTie size={144} color='blue' />, matched: false },
-    { icon: <FaCanadianMapleLeaf size={144} color='blue' />, matched: false },
-    { icon: <FaDiaspora size={144} color='blue' />, matched: false },
-    { icon: <FaDelicious size={144} color='blue' />, matched: false },
-    { icon: <FaDribbble size={144} color='blue' />, matched: false },
-    { icon: <FaEnvira size={144} color='blue' />, matched: false },
-    { icon: <FaConfluence size={144} color='blue' />, matched: false },
-    { icon: <FaFontAwesomeFlag size={144} color='blue' />, matched: false },
+    { icon: <FaBlackTie size={128} color='blue' />, matched: false },
+    { icon: <FaCanadianMapleLeaf size={128} color='blue' />, matched: false },
+    { icon: <FaDiaspora size={128} color='blue' />, matched: false },
+    { icon: <FaDelicious size={128} color='blue' />, matched: false },
+    { icon: <FaDribbble size={128} color='blue' />, matched: false },
+    { icon: <FaEnvira size={128} color='blue' />, matched: false },
+    { icon: <FaConfluence size={128} color='blue' />, matched: false },
+    { icon: <FaFontAwesomeFlag size={128} color='blue' />, matched: false },
   ]
 
   // Mezcla las cartas en el juego de memoria

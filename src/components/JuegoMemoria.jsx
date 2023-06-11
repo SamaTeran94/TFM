@@ -13,7 +13,10 @@ const JuegoMemoria = ({ shuffleCards, cards, handleChoice, choiceOne, choiceTwo,
                         {cardsMatched ? (
                             <h1 className="text-3xl">Felicidades! Encontraste todas las cartas!, te tomo {turns} turnos</h1>
                         ) : (
-                            <h1 className="text-3xl">Juego de Memoria, encuentra los pares</h1>
+                            <div className="flex flex-col items-center gap-5">
+                                <h1 className="text-3xl">Juego de Memoria</h1>
+                                <h1 className="text-3xl">Encuentra los pares</h1>
+                            </div>
                         )}
                         <h1 className="text-3xl">Turnos: {turns}</h1>
                     </div>
