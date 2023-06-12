@@ -1,7 +1,19 @@
 /* eslint-disable react/prop-types */
+import { useContext } from "react";
 import SingleCard from "./SingleCard";
+import { memoriaContext } from "./MemoriaContextProvider";
 
-const JuegoMemoria = ({ shuffleCards, cards, handleChoice, choiceOne, choiceTwo, disabled, turns }) => {
+const JuegoMemoria = () => {
+    const {
+        shuffleCards,
+        cards,
+        handleChoice,
+        choiceOne,
+        choiceTwo,
+        disabled,
+        turns
+    } = useContext(memoriaContext)
+
     const cardsMatched = cards.every((card) => card.matched === true);
 
     return (

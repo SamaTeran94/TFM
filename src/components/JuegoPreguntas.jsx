@@ -6,19 +6,23 @@ import Autenticacion from "./Autenticacion";
 import { db, auth } from '../config/Firebase.jsx'
 import { onAuthStateChanged } from 'firebase/auth';
 
-const JuegoPreguntas = ({
-  gameOverQ,
-  reiniciarJuego,
-  questions,
-  currentQuestionIndex,
-  juegoPreguntas,
-  levelCounterQ,
-  winQ,
-  shuffledAnswers,
-  getQuestions,
-  timerQ,
-  gameStartedQ,
-}) => {
+import { useContext } from "react";
+import { PreguntasContext } from "./PreguntasContextProvider";
+
+const JuegoPreguntas = () => {
+  const {
+    gameOverQ,
+    reiniciarJuego,
+    questions,
+    currentQuestionIndex,
+    juegoPreguntas,
+    levelCounterQ,
+    winQ,
+    shuffledAnswers,
+    getQuestions,
+    timerQ,
+    gameStartedQ,
+  } = useContext(PreguntasContext);
 
   //Crear Preguntas
   const [newQuestion, setNewQuestion] = useState('');
