@@ -1,4 +1,5 @@
 import './App.css';
+import './index.css';
 import JuegoColores from './components/JuegoColores';
 import JuegoPreguntas from './components/JuegoPreguntas';
 import { Route, Routes } from 'react-router-dom';

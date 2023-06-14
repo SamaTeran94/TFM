@@ -133,55 +133,62 @@ const JuegoPreguntas = () => {
 
   return (
     <>
-      <section className="flex flex-col items-center place-content-center content-center justify-evenly h-screen bg-preguntasbg">
+      <section className="flex flex-col items-center place-content-center content-center justify-evenly h-screen bg-slate-300">
         <div className="flex flex-col">
-          {gameOverQ || winQ ? null : <h1 className="mb-5 text-center bg-colorestxbg text-3xl">Juego De Preguntas</h1>}
-          {gameOverQ || winQ ? null : <h1 className="text-center bg-colorestxbg text-3xl">Selecciona La Respuesta Correcta</h1>}
+          {gameOverQ || winQ ? null : <h1 className="text-center bg-colorestxbg text-3xl border-2 p-2 border-black">Selecciona La Respuesta Correcta</h1>}
         </div>
         <div className="flex justify-around w-full">
-          <button className="bg-colorestxbg text-3xl" onClick={reiniciarJuego}>Empezar Juego</button>
-          {gameStartedQ && (<h1 className="bg-colorestxbg text-3xl">Tiempo Restante: {timerQ}</h1>)}
-          <p className="bg-colorestxbg text-3xl">Nivel: {levelCounterQ}</p>
+          <button className="text-3xl bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" onClick={reiniciarJuego}>Empezar Juego</button>
+          {!gameStartedQ || gameOverQ || winQ ? null : (<h1 className="bg-colorestxbg text-3xl border-2 p-2 border-black">Tiempo Restante: {timerQ}</h1>)}
+          <p className="bg-colorestxbg text-3xl border-2 p-2 border-black">Nivel: {levelCounterQ}</p>
         </div>
-        {gameOverQ ? (
-          <div className="flex flex-col">
-            <h1 className="text-center bg-colorestxbg text-3xl">Juego Finalizado</h1>
-            <button className='mt-4 py-2 px-4 bg-blue-500 text-white text-3xl rounded-md' onClick={reiniciarJuego}>Reiniciar Juego</button>
-          </div>
-        ) : winQ ? (
-          <div className="flex flex-col">
-            <h1 className="text-center bg-colorestxbg text-3xl">Felicitaciones, Ganaste El Juego!</h1>
-            <button className='mt-4 py-2 px-4 bg-blue-500 text-white text-3xl rounded-md' onClick={reiniciarJuego}>Jugar nuevamente</button>
-          </div>
-        ) : (
-          questions.slice(currentQuestionIndex, currentQuestionIndex + 1).map((question) => (
+
+        {gameOverQ && timerQ !== 0 ? <div className="flex flex-col">
+          <h1 className="text-center bg-colorestxbg text-3xl border-2 p-2 border-black">Juego Finalizado, seleccionaste la respuesta incorrecta!</h1>
+        </div> : gameOverQ && timerQ === 0 ? <div className="flex flex-col justify-center text-center">
+          <h1 className="bg-colorestxbg text-3xl border-2 p-2 border-black">Juego Finalizado, se terminó el tiempo!</h1>
+        </div> : null}
+
+        {winQ ? <div className="flex flex-col">
+          <h1 className="text-center bg-colorestxbg text-3xl">Felicitaciones, Ganaste El Juego!</h1>
+        </div> : null}
+
+        {questions.slice(currentQuestionIndex, currentQuestionIndex + 1).map((question) => (
+          !gameOverQ && !winQ && (
             <div key={question.id} className="flex flex-col items-center justify-around h-3/5">
-              {gameStartedQ ? <h1 className='bg-colorestxbg text-3xl'>{question.pregunta}</h1> : <h1 className='bg-colorestxbg text-3xl w-60 h-10'></h1>}
-              {gameStartedQ ? <div className="grid grid-cols-2 gap-48 text-center text-3xl ">
-                {shuffledAnswers.map((answer, index) => (
-                  <h1
-                    key={index}
-                    className="cursor-pointer bg-colorestxbg p-5"
-                    onClick={() => juegoPreguntas(answer)}
-                  >
-                    {answer}
-                  </h1>
-                ))}
-              </div> : <div className="grid grid-cols-2 gap-48 text-center text-3xl ">
-                <h1 className="cursor-normal bg-colorestxbg w-40 h-20 p-5"></h1>
-                <h1 className="cursor-normal bg-colorestxbg w-40 h-20 p-5"></h1>
-                <h1 className="cursor-normal bg-colorestxbg w-40 h-20 p-5"></h1>
-                <h1 className="cursor-normal bg-colorestxbg w-40 h-20 p-5"></h1>
-              </div>}
+              {gameStartedQ ? (
+                <h1 className="bg-colorestxbg text-3xl border-2 p-2 border-black">{question.pregunta}</h1>
+              ) : (
+                <h1 className="bg-colorestxbg text-3xl w-60 h-10"></h1>
+              )}
+              {gameStartedQ ? (
+                <div className="grid grid-cols-2 gap-48 text-center text-3xl">
+                  {shuffledAnswers.map((answer, index) => (
+                    <h1
+                      key={index}
+                      className="cursor-pointer bg-slate-400 p-5 text-white"
+                      onClick={() => juegoPreguntas(answer)}
+                    >
+                      {answer}
+                    </h1>
+                  ))}
+                </div>
+              ) : (
+                <div className="grid grid-cols-2 gap-48 text-center text-3xl">
+                  <h1 className="cursor-normal bg-colorestxbg w-40 h-20 p-5"></h1>
+                  <h1 className="cursor-normal bg-colorestxbg w-40 h-20 p-5"></h1>
+                  <h1 className="cursor-normal bg-colorestxbg w-40 h-20 p-5"></h1>
+                  <h1 className="cursor-normal bg-colorestxbg w-40 h-20 p-5"></h1>
+                </div>
+              )}
             </div>
-          ))
-        )}
+          )
+        ))}
       </section>
 
       <section className="flex flex-col items-center place-content-center content-center justify-evenly h-screen">
         <div className=" flex flex-col gap-5 items-center bg-gray-200 w-1/2 py-10">
           <h1 className="text-2xl">Crea tus propias preguntas</h1>
-          <h1 className="text-2xl">Para crear tus propias preguntas necesitas iniciar sesion</h1>
           <Autenticacion />
         </div>
         <form onSubmit={handleSubmitQuestion} className="flex flex-col bg-gray-500 p-10 gap-5 h-fit w-1/2 ">
@@ -205,8 +212,8 @@ const JuegoPreguntas = () => {
           }} className={`border border-gray-300 rounded-md px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500 ${incorrectAnswersErrorNumber || incorrectAnswersErrorCommas ? 'border-red-500' : ''}`} />
           {incorrectAnswersErrorNumber && <label className="text-red-500">Debe haber exactamente 3 respuestas incorrectas separadas por comas</label>}
           {incorrectAnswersErrorCommas && <label className="text-red-500">Las respuestas incorrectas deben estar separadas por comas</label>}
-          {userError && !user ? <label className="text-red-500">Debes iniciar sesión para crear preguntas</label> : ''}
           <button type="submit" className="py-2 px-4 bg-blue-500 text-white rounded-md">Crear Pregunta</button>
+          {userError && !user ? <label className="text-red-500">Debes iniciar sesión para crear preguntas</label> : ''}
         </form>
       </section>
     </>

@@ -17,7 +17,7 @@ const ColoresContextProvider = ({ children }) => {
 
     useEffect(() => {
         if (gameOver) {
-            setTimer(25); // Reset timer to initial value
+            setGameStarted(false); // Stop the game when gameOver is true
         } else if (gameStarted) { // Add gameStarted condition
             const interval = setInterval(() => {
                 setTimer((prevTimer) => {
@@ -73,16 +73,16 @@ const ColoresContextProvider = ({ children }) => {
     // Genera los colores para el juego de colores en función del nivel
     function generateColors(levelCounter) {
         const colors = [];
-        let variationAmount = 60;
+        let variationAmount = 50;
 
 
         // Ajustar la variación del color según el nivel actual
         if (levelCounter > 5 && levelCounter <= 10) {
-            variationAmount = 40; // Mayor variación en niveles 6-10
+            variationAmount = 35; // Mayor variación en niveles 6-10
         } else if (levelCounter > 10 && levelCounter <= 15) {
-            variationAmount = 30; // Mayor variación en niveles 11-15
+            variationAmount = 25; // Mayor variación en niveles 11-15
         } else if (levelCounter > 15) {
-            variationAmount = 20; // Mayor variación en niveles 16 en adelante
+            variationAmount = 15; // Mayor variación en niveles 16 en adelante
         }
 
         const baseR = Math.floor(Math.random() * 256);

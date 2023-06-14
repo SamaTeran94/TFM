@@ -23,7 +23,7 @@ const SingleCard = ({ card, handleChoice, flipped, disabled }) => {
                     {card.icon}
                 </div>
                 <div
-                    className="block w-32 h-32 rounded-md border-2 border-white bg-black" onClick={handleClick}
+                    className="block w-32 h-32 rounded-md border-2 border-white cursor-pointer bg-black" onClick={handleClick}
                     style={{
                         transform: `rotateY(${flipped ? '90deg' : '0deg'})`,
                         transitionDelay: `(${flipped ? '0s' : '0.2s'})`,

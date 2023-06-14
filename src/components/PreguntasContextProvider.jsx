@@ -49,7 +49,7 @@ const PreguntasContextProvider = ({ children }) => {
 
     useEffect(() => {
         if (gameOverQ) {
-            setTimerQ(15); // Reset timer to initial value
+            setGameStartedQ(false); // Stop the game when gameOver is true
         } else if (gameStartedQ) { // Add gameStarted condition
             const interval = setInterval(() => {
                 setTimerQ((prevTimer) => {

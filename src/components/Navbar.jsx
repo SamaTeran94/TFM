@@ -18,16 +18,16 @@ const Navbar = () => {
               <Link to='/'><img src="/src/assets/LOGO-UNIR.png" width={200} height={200} alt="Image" /></Link>
             </div>
             <div className="hidden md:flex md:space-x-4">
-              <Link to='colores' className="text-gray-700 text-xl">Juego Colores</Link>
+              <Link to='colores' className="text-gray-700 text-2xl">Juego Colores</Link>
             </div>
             <div className="hidden md:flex md:space-x-4">
-              <Link to='preguntas' className="text-gray-700 text-xl">Juego Preguntas</Link>
+              <Link to='preguntas' className="text-gray-700 text-2xl">Juego Preguntas</Link>
             </div>
             <div className="hidden md:flex md:space-x-4">
-              <Link to='memoria' className="text-gray-700 text-xl">Juego Memoria</Link>
+              <Link to='memoria' className="text-gray-700 text-2xl">Juego Memoria</Link>
             </div>
             <div className="hidden md:flex md:space-x-4">
-              <Link to='' className="text-gray-700 text-xl">Nosotros</Link>
+              <Link to='' className="text-gray-700 text-2xl">Nosotros</Link>
             </div>
             <div className="md:hidden">
               <button
@@ -46,11 +46,11 @@ const Navbar = () => {
             </div>
           </div>
           {isOpen && (
-            <div className="mt-2">
-              <Link to='colores' className="text-gray-700 text-xl">Juego Colores</Link>
-              <Link to='preguntas' className="text-gray-700 text-xl">Juego Preguntas</Link>
-              <Link to='memoria' className="text-gray-700 text-xl">Juego Memoria</Link>
-              <Link to='' className="text-gray-700 text-xl">Nosotros</Link>
+            <div className="mt-2 flex flex-col gap-5">
+              <Link to='colores' className="text-gray-700 text-2xl">Juego Colores</Link>
+              <Link to='preguntas' className="text-gray-700 text-2xl">Juego Preguntas</Link>
+              <Link to='memoria' className="text-gray-700 text-2xl">Juego Memoria</Link>
+              <Link to='' className="text-gray-700 text-2xl">Nosotros</Link>
             </div>
           )}
         </div>
