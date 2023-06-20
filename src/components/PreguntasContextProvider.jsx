@@ -18,8 +18,13 @@ const PreguntasContextProvider = ({ children }) => {
     const [gameOverQ, setGameOverQ] = useState(false); // Indica si el juego de preguntas ha terminado
     const [winQ, setWinQ] = useState(false); // Indica si el juego de preguntas ha sido ganado
     const [shuffledAnswers, setShuffledAnswers] = useState([]); // Almacena las respuestas mezcladas de la pregunta actual
-    const [timerQ, setTimerQ] = useState(15);
+    const [timerQ, setTimerQ] = useState(20);
     const [gameStartedQ, setGameStartedQ] = useState(false);
+    const [disabledAnswers, setDisabledAnswers] = useState([]);
+    const [fiftyUsed, setFiftyUsed] = useState(false)
+    const [timeUsed, setTimeUsed] = useState(false)
+    const [skippedUsed, setSkippedUsed] = useState(false)
+    const [skippedQuestions, setSkippedQuestions] = useState([false]);
 
     // Carga de preguntas desde FireBase
 
@@ -67,7 +72,7 @@ const PreguntasContextProvider = ({ children }) => {
 
     useEffect(() => {
         if (levelCounterQ !== 1) {
-            setTimerQ(15); // Reset timer to initial value
+            setTimerQ(20); // Reset timer to initial value
         }
     }, [levelCounterQ]);
 
@@ -100,9 +105,10 @@ const PreguntasContextProvider = ({ children }) => {
         } else {
             setGameOverQ(true);
         }
+        setDisabledAnswers([]);
     };
 
-    // Aparecen las pregunas aleatoriamente
+    // Aparecen las preguntas aleatoriamente
     const shuffleArray = (array) => {
         const shuffledArray = [...array];
         for (let i = shuffledArray.length - 1; i > 0; i--) {
@@ -119,9 +125,11 @@ const PreguntasContextProvider = ({ children }) => {
         setCurrentQuestionIndex(0);
         setWinQ(false);
         setGameStartedQ(true)
-        setTimerQ(15)
+        setTimerQ(20)
         const shuffledQuestions = shuffleArray(questions);
         setQuestions(shuffledQuestions);
+        setFiftyUsed(false)
+        setTimeUsed(false)
     };
 
     const value = {
@@ -140,7 +148,17 @@ const PreguntasContextProvider = ({ children }) => {
         timerQ,
         setTimerQ,
         gameStartedQ,
-        setGameStartedQ
+        setGameStartedQ,
+        disabledAnswers,
+        setDisabledAnswers,
+        fiftyUsed,
+        setFiftyUsed,
+        timeUsed,
+        setTimeUsed,
+        skippedQuestions,
+        setSkippedQuestions,
+        skippedUsed,
+        setSkippedUsed
     }
 
     return (

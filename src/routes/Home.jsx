@@ -9,7 +9,8 @@ const Home = () => {
                         Bienvenidos al trabajo de fin de Master de diseño y desarrollo Front-End, el que hemos creado algunos juegos de ayuda para que de forma divertida y eficaz puedan ejercitar su mente.<br></br><br></br>
                         Los juegos de ayuda mental son una valuosa herramienta para ejercitar y fortalecer nuestras habilidades congnitivas.<br></br><br></br>
                         Estos juegos desafiantes y entretenidos nos permiten estimular nuestro cerebro, mejorar nuestra memoria, concentracion,
-                        agilidad mental y desarrollar habilidades de resolucion de problemas.
+                        agilidad mental y desarrollar habilidades de resolucion de problemas.<br></br><br></br>
+                        En el menu puedes encontrar los distintos juegos disponibles.
                     </div>
                 </div>
 

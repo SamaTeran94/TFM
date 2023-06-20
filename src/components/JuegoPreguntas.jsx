@@ -15,6 +15,7 @@ const JuegoPreguntas = () => {
     reiniciarJuego,
     questions,
     currentQuestionIndex,
+    setCurrentQuestionIndex,
     juegoPreguntas,
     levelCounterQ,
     winQ,
@@ -22,6 +23,17 @@ const JuegoPreguntas = () => {
     getQuestions,
     timerQ,
     gameStartedQ,
+    disabledAnswers,
+    setDisabledAnswers,
+    setTimerQ,
+    fiftyUsed,
+    setFiftyUsed,
+    timeUsed,
+    setTimeUsed,
+    skippedQuestions,
+    setSkippedQuestions,
+    skippedUsed,
+    setSkippedUsed
   } = useContext(PreguntasContext);
 
   //Crear Preguntas
@@ -131,56 +143,137 @@ const JuegoPreguntas = () => {
     }
   };
 
+  //COMODINES
+
+  const disableTwoIncorrectAnswers = () => {
+    const currentQuestion = questions[currentQuestionIndex];
+    const incorrectAnswers = currentQuestion.respuestasIncorrectas;
+
+    // Shuffle the incorrect answers
+    const shuffledIncorrectAnswers = incorrectAnswers.sort(() => Math.random() - 0.5);
+
+    // Disable the first two shuffled incorrect answers
+    const disabledAnswers = shuffledIncorrectAnswers.slice(0, 2);
+
+    setDisabledAnswers(disabledAnswers);
+  };
+
+  const handleFiftyClick = () => {
+    disableTwoIncorrectAnswers();
+    setFiftyUsed(true);
+  }
+
+
+  const handleTimeClick = () => {
+    addTime()
+    setTimeUsed(true);
+  }
+
+  const addTime = () => {
+    setTimerQ((prevTimer) => {
+      return prevTimer += 10
+    });
+  }
+
+  const handleSkip = () => {
+    // Add the current question to the skippedQuestions array
+    setSkippedQuestions([...skippedQuestions, currentQuestionIndex]);
+
+    // Increment the currentQuestionIndex to move to the next question
+    setCurrentQuestionIndex(currentQuestionIndex + 1);
+  };
+
+  const skipQuestion = () => {
+    handleSkip()
+    setTimerQ(20)
+    setSkippedUsed(true)
+  }
+
+
   return (
     <>
-      <section className="flex flex-col items-center place-content-center content-center justify-evenly h-screen bg-slate-300">
-        <div className="flex flex-col">
-          {gameOverQ || winQ ? null : <h1 className="text-center bg-colorestxbg text-3xl border-2 p-2 border-black">Selecciona La Respuesta Correcta</h1>}
-        </div>
-        <div className="flex justify-around w-full">
-          <button className="text-3xl bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" onClick={reiniciarJuego}>Empezar Juego</button>
-          {!gameStartedQ || gameOverQ || winQ ? null : (<h1 className="bg-colorestxbg text-3xl border-2 p-2 border-black">Tiempo Restante: {timerQ}</h1>)}
-          <p className="bg-colorestxbg text-3xl border-2 p-2 border-black">Nivel: {levelCounterQ}</p>
-        </div>
+      <section className="flex flex-col items-center place-content-center content-center justify-evenly h-screen bg-slate-300 p-5">
+        {!gameStartedQ ? <div className="flex w-full justify-center">
+          <div>
+            <div className="w-full">
+              {gameOverQ || winQ ? null : <h1 className="text-center bg-colorestxbg text-3xl border-2 p-2 border-black mb-5">Selecciona La Respuesta Correcta</h1>}
+            </div>
+          </div>
+        </div> : null}
+        {gameStartedQ ? <div className="flex w-full justify-center">
+          <div className="w-1/4">
+          </div>
+          <div className="w-3/4">
+            {gameOverQ || winQ ? null : <h1 className="text-center bg-colorestxbg text-3xl border-2 p-2 border-black mb-5">Selecciona La Respuesta Correcta</h1>}
+          </div>
+        </div> : null}
 
+        {!gameStartedQ ? <div className="flex w-full">
+          <div className="w-full flex justify-center">
+            {gameOverQ || winQ ? <button className="text-3xl bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" onClick={reiniciarJuego}>Reiniciar Juego</button> : null}
+            {gameStartedQ || gameOverQ || winQ ? null : <button className="text-3xl bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" onClick={reiniciarJuego}>Comenzar El Juego</button>}
+            {!gameStartedQ || gameOverQ || winQ ? null : (<h1 className="bg-colorestxbg text-3xl border-2 p-2 border-black">Tiempo Restante: {timerQ}</h1>)}
+            {!gameStartedQ || gameOverQ || winQ ? null : <p className="bg-colorestxbg text-3xl border-2 p-2 border-black">Nivel: {levelCounterQ}</p>}
+          </div>
+        </div> : null}
+        {gameStartedQ ? <div className="flex w-full">
+          <div className="w-1/4">
+          </div>
+          <div className="w-3/4 flex justify-around mb-5">
+            {gameOverQ || winQ ? <button className="text-3xl bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" onClick={reiniciarJuego}>Reiniciar Juego</button> : null}
+            {gameStartedQ || gameOverQ || winQ ? null : <button className="text-3xl bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" onClick={reiniciarJuego}>Comenzar El Juego</button>}
+            {!gameStartedQ || gameOverQ || winQ ? null : (<h1 className="bg-colorestxbg text-3xl border-2 p-2 border-black">Tiempo Restante: {timerQ}</h1>)}
+            {!gameStartedQ || gameOverQ || winQ ? null : <p className="bg-colorestxbg text-3xl border-2 p-2 border-black">Nivel: {levelCounterQ}</p>}
+          </div>
+        </div> : null}
         {gameOverQ && timerQ !== 0 ? <div className="flex flex-col">
           <h1 className="text-center bg-colorestxbg text-3xl border-2 p-2 border-black">Juego Finalizado, seleccionaste la respuesta incorrecta!</h1>
         </div> : gameOverQ && timerQ === 0 ? <div className="flex flex-col justify-center text-center">
           <h1 className="bg-colorestxbg text-3xl border-2 p-2 border-black">Juego Finalizado, se terminó el tiempo!</h1>
         </div> : null}
-
         {winQ ? <div className="flex flex-col">
           <h1 className="text-center bg-colorestxbg text-3xl">Felicitaciones, Ganaste El Juego!</h1>
         </div> : null}
-
-        {questions.slice(currentQuestionIndex, currentQuestionIndex + 1).map((question) => (
+        {questions.filter((question, index) => !skippedQuestions.includes(index)).slice(currentQuestionIndex, currentQuestionIndex + 1).map((question) => (
           !gameOverQ && !winQ && (
-            <div key={question.id} className="flex flex-col items-center justify-around h-3/5">
-              {gameStartedQ ? (
-                <h1 className="bg-colorestxbg text-3xl border-2 p-2 border-black">{question.pregunta}</h1>
-              ) : (
-                <h1 className="bg-colorestxbg text-3xl w-60 h-10"></h1>
-              )}
-              {gameStartedQ ? (
-                <div className="grid grid-cols-2 gap-48 text-center text-3xl">
-                  {shuffledAnswers.map((answer, index) => (
-                    <h1
-                      key={index}
-                      className="cursor-pointer bg-slate-400 p-5 text-white"
-                      onClick={() => juegoPreguntas(answer)}
-                    >
-                      {answer}
-                    </h1>
-                  ))}
-                </div>
-              ) : (
-                <div className="grid grid-cols-2 gap-48 text-center text-3xl">
-                  <h1 className="cursor-normal bg-colorestxbg w-40 h-20 p-5"></h1>
-                  <h1 className="cursor-normal bg-colorestxbg w-40 h-20 p-5"></h1>
-                  <h1 className="cursor-normal bg-colorestxbg w-40 h-20 p-5"></h1>
-                  <h1 className="cursor-normal bg-colorestxbg w-40 h-20 p-5"></h1>
-                </div>
-              )}
+            <div key={question.id} className="flex flex-row gap-10 items-center justify-center w-full h-auto">
+              {gameStartedQ ? <div className="w-1/4 flex flex-col justify-center gap-5">
+                {!gameOverQ || !winQ ? <h1 className="text-center bg-colorestxbg text-3xl border-2 p-2 border-black">Comodines</h1> : null}
+                {!gameOverQ || !winQ ? <button disabled={fiftyUsed || !gameStartedQ} className={`text-3xl border-2 border-black ${fiftyUsed ? 'opacity-50 pointer-events-none' : ''}`} onClick={handleFiftyClick}>50/50</button> : null}
+                {!gameOverQ || !winQ ? <button disabled={timeUsed || !gameStartedQ} className={`text-3xl border-2 border-black ${timeUsed ? 'opacity-50 pointer-events-none' : ''}`} onClick={handleTimeClick}>Añadir Tiempo</button> : null}
+                {!gameOverQ || !winQ ? <button disabled={skippedUsed || !gameStartedQ} className={`text-3xl border-2 border-black ${skippedUsed ? 'opacity-50 pointer-events-none' : ''}`} onClick={skipQuestion}>Saltar Pregunta</button> : null}
+              </div> : null}
+              <div className="flex flex-col items-center justify-center w-3/4">
+                {gameStartedQ ? (
+                  <h1 className="bg-colorestxbg text-center text-3xl border-2 p-2 mb-10 border-black">{question.pregunta}</h1>
+                ) : (
+                  <h1 className="bg-colorestxbg text-3xl w-60 h-10 mb-10"></h1>
+                )}
+                {gameStartedQ ? (
+                  <div className="grid grid-cols-2 gap-48 text-center text-3xl">
+                    {shuffledAnswers.map((answer, index) => {
+                      const isDisabled = disabledAnswers.includes(answer);
+                      return (
+                        <button
+                          key={index}
+                          className={`cursor-pointer text-center bg-slate-400 p-5 text-white ${isDisabled ? 'opacity-50 pointer-events-none' : ''}`}
+                          onClick={() => juegoPreguntas(answer)}
+                          disabled={isDisabled}
+                        >
+                          {answer}
+                        </button>
+                      );
+                    })}
+                  </div>
+                ) : (
+                  <div className="grid grid-cols-2 gap-48 text-center text-3xl">
+                    <h1 className="cursor-normal bg-colorestxbg w-40 h-20 p-5"></h1>
+                    <h1 className="cursor-normal bg-colorestxbg w-40 h-20 p-5"></h1>
+                    <h1 className="cursor-normal bg-colorestxbg w-40 h-20 p-5"></h1>
+                    <h1 className="cursor-normal bg-colorestxbg w-40 h-20 p-5"></h1>
+                  </div>
+                )}
+              </div>
             </div>
           )
         ))}

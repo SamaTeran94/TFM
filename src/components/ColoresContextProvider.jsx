@@ -10,7 +10,7 @@ const ColoresContextProvider = ({ children }) => {
     const [gameOver, setGameOver] = useState(false); // Indica si el juego de colores ha terminado
     const [win, setWin] = useState(false); // Indica si el juego de colores ha sido ganado
     const [levelCounter, setLevelCounter] = useState(1); // Contador para el nivel actual del juego de colores
-    const [timer, setTimer] = useState(25);
+    const [timer, setTimer] = useState(20);
     const [gameStarted, setGameStarted] = useState(false);
 
     //Timer Juego Colores
@@ -42,7 +42,7 @@ const ColoresContextProvider = ({ children }) => {
             case level > 15:
                 return 10;
             default:
-                return 25; // Default initial value
+                return 20; // Default initial value
         }
     };
 

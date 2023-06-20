@@ -11,6 +11,7 @@ const MemoriaContextProvider = ({ children }) => {
     const [choiceOne, setChoiceOne] = useState(null); // Primera carta seleccionada en el juego de memoria
     const [choiceTwo, setChoiceTwo] = useState(null); // Segunda carta seleccionada en el juego de memoria
     const [disabled, setDisabled] = useState(null); // Indica si las cartas están deshabilitadas temporalment
+    const [gameStarted, setGameStarted] = useState(false)
 
     const cardImages = [
         { icon: <FaBlackTie size={128} color='blue' />, matched: false },
@@ -49,6 +50,7 @@ const MemoriaContextProvider = ({ children }) => {
     // Mezcla las cartas al cargar el juego de memoria
     useEffect(() => {
         shuffleCards();
+        setGameStarted(false)
     }, []);
 
     // Mezcla las cartas en el juego de memoria
@@ -61,6 +63,7 @@ const MemoriaContextProvider = ({ children }) => {
         setChoiceTwo(null);
         setCards(shuffleCards);
         setTurns(0);
+        setGameStarted(true)
     };
 
     // Maneja la elección de una carta en el juego de memoria
@@ -86,7 +89,8 @@ const MemoriaContextProvider = ({ children }) => {
         choiceTwo,
         setChoiceTwo,
         disabled,
-        setDisabled
+        setDisabled,
+        gameStarted
     }
 
     return (
