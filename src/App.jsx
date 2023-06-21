@@ -9,6 +9,7 @@ import Navbar from './components/Navbar';
 import ColoresContextProvider from './components/ColoresContextProvider.jsx'
 import PreguntasContextProvider from './components/PreguntasContextProvider';
 import MemoriaContextProvider from './components/MemoriaContextProvider';
+import Nosotros from './components/Nosotros';
 
 function App() {
 
@@ -43,6 +44,9 @@ function App() {
                 />
               </MemoriaContextProvider>
             }
+          />
+          <Route path='nosotros'
+            element={<Nosotros />}
           />
         </Route>
       </Routes>

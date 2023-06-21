@@ -27,7 +27,7 @@ const Navbar = () => {
               <Link to='memoria' className="text-gray-700 text-2xl">Juego Memoria</Link>
             </div>
             <div className="hidden md:flex md:space-x-4">
-              <Link to='' className="text-gray-700 text-2xl">Nosotros</Link>
+              <Link to='nosotros' className="text-gray-700 text-2xl">Nosotros</Link>
             </div>
             <div className="md:hidden">
               <button
