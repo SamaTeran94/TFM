@@ -22,10 +22,10 @@ const ContactForm = () => {
 
     return (
         <div className="w-full">
-            <h2 className="text-2xl font-bold mb-4">Contact Us</h2>
+            <h2 className="text-2xl font-bold mb-4">Envianos un Mensaje</h2>
             <form onSubmit={sendEmail} className="max-w-md">
                 <div className="mb-4">
-                    <label className="block text-gray-700 font-semibold mb-2">Name</label>
+                    <label className="block text-gray-700 font-semibold mb-2">Nombre</label>
                     <input
                         type="text"
                         name='name'
@@ -33,7 +33,7 @@ const ContactForm = () => {
                     />
                 </div>
                 <div className="mb-4">
-                    <label className="block text-gray-700 font-semibold mb-2">Email</label>
+                    <label className="block text-gray-700 font-semibold mb-2">Correo</label>
                     <input
                         type="email"
                         name='email'
@@ -41,7 +41,7 @@ const ContactForm = () => {
                     />
                 </div>
                 <div className="mb-4">
-                    <label className="block text-gray-700 font-semibold mb-2">Subject</label>
+                    <label className="block text-gray-700 font-semibold mb-2">Asunto</label>
                     <input
                         type="text"
                         name='subject'
@@ -49,7 +49,7 @@ const ContactForm = () => {
                     />
                 </div>
                 <div className="mb-4">
-                    <label className="block text-gray-700 font-semibold mb-2">Message</label>
+                    <label className="block text-gray-700 font-semibold mb-2">Mensaje</label>
                     <textarea
                         name="message"
                         className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-blue-500"
@@ -61,7 +61,7 @@ const ContactForm = () => {
                     className="bg-blue-500 hover:bg-blue-600 text-white font-semibold px-4 py-2 rounded-md"
                     value='Enviar Mensaje'
                 >
-                    Send Message
+                    Enviar Mensaje
                 </button>
             </form>
         </div>

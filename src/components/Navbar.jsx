@@ -1,9 +1,10 @@
 /* eslint-disable react/prop-types */
 import { useState } from 'react';
-import { Link, Outlet } from 'react-router-dom';
+import { Link, Outlet, useLocation } from 'react-router-dom';
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const location = useLocation(); // Access the current location
 
   const toggleMenu = () => {
     setIsOpen(!isOpen);
@@ -17,19 +18,39 @@ const Navbar = () => {
             <div className="flex items-center">
               <Link to='/'><img src="/src/assets/LOGO-UNIR.png" width={200} height={200} alt="Image" /></Link>
             </div>
-            <div className="hidden md:flex md:space-x-4">
-              <Link to='colores' className="text-gray-700 text-2xl">Juego Colores</Link>
+            <div className="hidden lg:flex md:space-x-4">
+              <Link
+                to="/colores"
+                className={`text-gray-700 text-2xl hover:font-bold ${location.pathname === '/colores' ? 'bg-blue-100 p-1' : ''}`}
+              >
+                Juego Colores
+              </Link>
             </div>
-            <div className="hidden md:flex md:space-x-4">
-              <Link to='preguntas' className="text-gray-700 text-2xl">Juego Preguntas</Link>
+            <div className="hidden lg:flex md:space-x-4">
+              <Link
+                to="/preguntas"
+                className={`text-gray-700 text-2xl hover:font-bold ${location.pathname === '/preguntas' ? 'bg-blue-100 p-1' : ''}`}
+              >
+                Juego Preguntas
+              </Link>
             </div>
-            <div className="hidden md:flex md:space-x-4">
-              <Link to='memoria' className="text-gray-700 text-2xl">Juego Memoria</Link>
+            <div className="hidden lg:flex md:space-x-4">
+              <Link
+                to="/memoria"
+                className={`text-gray-700 text-2xl hover:font-bold ${location.pathname === '/memoria' ? 'bg-blue-100 p-1' : ''}`}
+              >
+                Juego Memoria
+              </Link>
             </div>
-            <div className="hidden md:flex md:space-x-4">
-              <Link to='nosotros' className="text-gray-700 text-2xl">Nosotros</Link>
+            <div className="hidden lg:flex md:space-x-4">
+              <Link
+                to="/nosotros"
+                className={`text-gray-700 text-2xl hover:font-bold ${location.pathname === '/nosotros' ? 'bg-blue-100 p-1' : ''}`}
+              >
+                Nosotros
+              </Link>
             </div>
-            <div className="md:hidden">
+            <div className="lg:hidden">
               <button
                 type="button"
                 className="text-gray-700 hover:text-gray-900 focus:outline-none focus:text-gray-900"
@@ -47,10 +68,30 @@ const Navbar = () => {
           </div>
           {isOpen && (
             <div className="mt-2 flex flex-col gap-5">
-              <Link to='colores' className="text-gray-700 text-2xl">Juego Colores</Link>
-              <Link to='preguntas' className="text-gray-700 text-2xl">Juego Preguntas</Link>
-              <Link to='memoria' className="text-gray-700 text-2xl">Juego Memoria</Link>
-              <Link to='' className="text-gray-700 text-2xl">Nosotros</Link>
+              <Link
+                to="/colores"
+                className={`text-gray-700 text-2xl hover:font-bold ${location.pathname === '/colores' ? 'bg-blue-100 p-1' : ''}`}
+              >
+                Juego Colores
+              </Link>
+              <Link
+                to="/preguntas"
+                className={`text-gray-700 text-2xl hover:font-bold ${location.pathname === '/preguntas' ? 'bg-blue-100 p-1' : ''}`}
+              >
+                Juego Preguntas
+              </Link>
+              <Link
+                to="/memoria"
+                className={`text-gray-700 text-2xl hover:font-bold ${location.pathname === '/memoria' ? 'bg-blue-100 p-1' : ''}`}
+              >
+                Juego Memoria
+              </Link>
+              <Link
+                to="/nosotros"
+                className={`text-gray-700 text-2xl hover:font-bold ${location.pathname === '/nosotros' ? 'bg-blue-100 p-1' : ''}`}
+              >
+                Nosotros
+              </Link>
             </div>
           )}
         </div>

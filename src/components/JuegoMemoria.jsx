@@ -25,7 +25,7 @@ const JuegoMemoria = () => {
                 </div>}
                 <div className=" flex flex-row justify-center gap-5 w-full ">
                     {cardsMatched ? <h1 className="text-center bg-colorestxbg text-3xl border-2 p-2 border-black">Encontrar todos los pares te tomo {turns} turnos</h1> : null}
-                    {gameStarted ? null : <button className="text-3xl bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" onClick={shuffleCards}>Empezar Juego</button>}
+                    {gameStarted ? null : <button className="text-3xl bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" onClick={shuffleCards}>Comenzar el Juego</button>}
                     {cardsMatched ? <button className="text-3xl bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" onClick={shuffleCards}>Reiniciar Juego</button> : null}
                     {cardsMatched ? null : (gameStarted && <h1 className="text-center bg-colorestxbg text-3xl border-2 p-2 border-black">Turnos: {turns}</h1>)}
                 </div>

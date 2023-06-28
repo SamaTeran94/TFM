@@ -239,9 +239,9 @@ const JuegoPreguntas = () => {
             <div key={question.id} className="flex flex-row gap-10 items-center justify-center w-full h-auto">
               {gameStartedQ ? <div className="w-1/4 flex flex-col justify-center gap-5">
                 {!gameOverQ || !winQ ? <h1 className="text-center bg-colorestxbg text-3xl border-2 p-2 border-black">Comodines</h1> : null}
-                {!gameOverQ || !winQ ? <button disabled={fiftyUsed || !gameStartedQ} className={`text-3xl border-2 border-black ${fiftyUsed ? 'opacity-50 pointer-events-none' : ''}`} onClick={handleFiftyClick}>50/50</button> : null}
-                {!gameOverQ || !winQ ? <button disabled={timeUsed || !gameStartedQ} className={`text-3xl border-2 border-black ${timeUsed ? 'opacity-50 pointer-events-none' : ''}`} onClick={handleTimeClick}>Añadir Tiempo</button> : null}
-                {!gameOverQ || !winQ ? <button disabled={skippedUsed || !gameStartedQ} className={`text-3xl border-2 border-black ${skippedUsed ? 'opacity-50 pointer-events-none' : ''}`} onClick={skipQuestion}>Saltar Pregunta</button> : null}
+                {!gameOverQ || !winQ ? <button disabled={fiftyUsed || !gameStartedQ} className={`text-3xl border-2 border-black hover:font-bold ${fiftyUsed ? 'opacity-50 pointer-events-none' : ''}`} onClick={handleFiftyClick}>50/50</button> : null}
+                {!gameOverQ || !winQ ? <button disabled={timeUsed || !gameStartedQ} className={`text-3xl border-2 border-black hover:font-bold ${timeUsed ? 'opacity-50 pointer-events-none' : ''}`} onClick={handleTimeClick}>Añadir Tiempo</button> : null}
+                {!gameOverQ || !winQ ? <button disabled={skippedUsed || !gameStartedQ} className={`text-3xl border-2 border-black hover:font-bold ${skippedUsed ? 'opacity-50 pointer-events-none' : ''}`} onClick={skipQuestion}>Saltar Pregunta</button> : null}
               </div> : null}
               <div className="flex flex-col items-center justify-center w-3/4">
                 {gameStartedQ ? (
