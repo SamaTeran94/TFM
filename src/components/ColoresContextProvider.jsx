@@ -16,14 +16,14 @@ const ColoresContextProvider = ({ children }) => {
     //Timer Juego Colores
 
     useEffect(() => {
-        if (gameOver) {
-            setGameStarted(false); // Stop the game when gameOver is true
-        } else if (gameStarted) { // Add gameStarted condition
+        if (gameOver || win || levelCounter === 20) {
+            setGameStarted(false);
+        } else if (gameStarted) {
             const interval = setInterval(() => {
                 setTimer((prevTimer) => {
                     if (prevTimer === 0) {
                         clearInterval(interval);
-                        setGameOver(true); // Set game over when timer reaches 0
+                        setGameOver(true);
                     }
                     return prevTimer > 0 ? prevTimer - 1 : prevTimer;
                 });
@@ -31,7 +31,7 @@ const ColoresContextProvider = ({ children }) => {
 
             return () => clearInterval(interval);
         }
-    }, [gameOver, gameStarted]); // Include gameStarted in the dependency array
+    }, [gameOver, gameStarted, levelCounter, win]);
 
     const getInitialTimerValue = (level) => {
         switch (true) {
@@ -54,6 +54,7 @@ const ColoresContextProvider = ({ children }) => {
     useEffect(() => {
         if (levelCounter === 20) {
             setWin(true);
+
         }
     }, [levelCounter]);
 

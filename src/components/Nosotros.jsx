@@ -2,6 +2,7 @@ import Card from "./Card"
 import ContactForm from "./ContactForm"
 
 const Nosotros = () => {
+
     return (
         <div className="bg-slate-300 h-screen">
             <div className="flex justify-center ">
@@ -12,7 +13,7 @@ const Nosotros = () => {
                     <Card
                         title="David Samaniego"
                         description="Licenciado en Interactividad y Multimedia"
-                        image="/src/assets/DS Picture.jpg"
+                        image="../../images/DS Picture.jpg"
                         email="davteran@gmail.com"
                     />
                 </div>
@@ -20,7 +21,7 @@ const Nosotros = () => {
                     <Card
                         title="Melanie Naranjo"
                         description="Diseñadora Gráfica e Industrial"
-                        image="/src/assets/Melanie.jpeg"
+                        image="../../images/Melanie.jpeg"
                         email="manaranjov97@gmail.com"
                     />
                 </div>
@@ -29,7 +30,6 @@ const Nosotros = () => {
                 </div>
             </div>
         </div>
-
 
     )
 }

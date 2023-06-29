@@ -1,56 +1,76 @@
+import React, { Suspense } from 'react';
 import './App.css';
 import './index.css';
-import JuegoColores from './components/JuegoColores';
-import JuegoPreguntas from './components/JuegoPreguntas';
 import { Route, Routes } from 'react-router-dom';
-import Home from './routes/Home';
-import JuegoMemoria from './components/JuegoMemoria';
 import Navbar from './components/Navbar';
-import ColoresContextProvider from './components/ColoresContextProvider.jsx'
-import PreguntasContextProvider from './components/PreguntasContextProvider';
-import MemoriaContextProvider from './components/MemoriaContextProvider';
-import Nosotros from './components/Nosotros';
+
+// Use React.lazy to dynamically import components
+const Home = React.lazy(() => import('./routes/Home'));
+const JuegoColores = React.lazy(() => import('./components/JuegoColores'));
+const JuegoPreguntas = React.lazy(() => import('./components/JuegoPreguntas'));
+const JuegoMemoria = React.lazy(() => import('./components/JuegoMemoria'));
+const Nosotros = React.lazy(() => import('./components/Nosotros'));
+const ColoresContextProvider = React.lazy(() => import('./components/ColoresContextProvider'));
+const PreguntasContextProvider = React.lazy(() => import('./components/PreguntasContextProvider'));
+const MemoriaContextProvider = React.lazy(() => import('./components/MemoriaContextProvider'));
+
 
 function App() {
-
   return (
     <>
-
       <Routes>
         <Route path='/' element={<Navbar />}>
-          <Route index element={<Home />} />
+          <Route
+            index
+            element={
+              <Suspense fallback={<div>Loading...</div>}>
+                <Home />
+              </Suspense>
+            }
+          />
           <Route
             path='colores'
             element={
-              <ColoresContextProvider>
-                <JuegoColores
-                />
-              </ColoresContextProvider>
+              <Suspense fallback={<div>Loading...</div>}>
+                <ColoresContextProvider>
+                  <JuegoColores
+                  />
+                </ColoresContextProvider>
+              </Suspense>
             }
           />
           <Route
             path='preguntas'
             element={
-              <PreguntasContextProvider>
-                <JuegoPreguntas
-                />
-              </PreguntasContextProvider>
+              <Suspense fallback={<div>Loading...</div>}>
+                <PreguntasContextProvider>
+                  <JuegoPreguntas
+                  />
+                </PreguntasContextProvider>
+              </Suspense>
             }
           />
-          <Route path='memoria'
+          <Route
+            path='memoria'
             element={
-              <MemoriaContextProvider>
-                <JuegoMemoria
-                />
-              </MemoriaContextProvider>
+              <Suspense fallback={<div>Loading...</div>}>
+                <MemoriaContextProvider>
+                  <JuegoMemoria
+                  />
+                </MemoriaContextProvider>
+              </Suspense>
             }
           />
-          <Route path='nosotros'
-            element={<Nosotros />}
+          <Route
+            path='nosotros'
+            element={
+              <Suspense fallback={<div>Loading...</div>}>
+                <Nosotros />
+              </Suspense>
+            }
           />
         </Route>
       </Routes>
-
     </>
   );
 }

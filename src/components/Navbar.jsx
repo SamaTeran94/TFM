@@ -16,7 +16,7 @@ const Navbar = () => {
         <div className="container mx-auto px-4">
           <div className="flex items-center justify-between h-16">
             <div className="flex items-center">
-              <Link to='/'><img src="/src/assets/LOGO-UNIR.png" width={200} height={200} alt="Image" /></Link>
+              <Link to='/'><img src="../../images/LOGO-UNIR.png" width={200} height={200} alt="Image" /></Link>
             </div>
             <div className="hidden lg:flex md:space-x-4">
               <Link

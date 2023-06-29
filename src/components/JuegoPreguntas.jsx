@@ -192,7 +192,7 @@ const JuegoPreguntas = () => {
 
   return (
     <>
-      <section className="flex flex-col items-center place-content-center content-center justify-evenly h-screen bg-slate-300 p-5">
+      <section className={`${!gameStartedQ || gameOverQ || winQ ? 'flex flex-col items-center place-content-center content-center justify-evenly h-screen bg-slate-300 p-5' : `flex flex-col items-center place-content-center content-center justify-evenly md:h-fit lg:h-screen bg-slate-300 p-5`}`}>
         {!gameStartedQ ? <div className="flex w-full justify-center">
           <div>
             <div className="w-full">
@@ -201,13 +201,12 @@ const JuegoPreguntas = () => {
           </div>
         </div> : null}
         {gameStartedQ ? <div className="flex w-full justify-center">
-          <div className="w-1/4">
+          <div className="w-4/4 lg:w-1/4">
           </div>
-          <div className="w-3/4">
-            {gameOverQ || winQ ? null : <h1 className="text-center bg-colorestxbg text-3xl border-2 p-2 border-black mb-5">Selecciona La Respuesta Correcta</h1>}
+          <div className="w-4/4 lg:w-3/4">
+            {gameOverQ || winQ ? null : <h1 className="text-center bg-colorestxbg text-xl sm:text-2xl md:text-3xl border-2 p-2 border-black mb-5">Selecciona La Respuesta Correcta</h1>}
           </div>
         </div> : null}
-
         {!gameStartedQ ? <div className="flex w-full">
           <div className="w-full flex justify-center">
             {gameOverQ || winQ ? <button className="text-3xl bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" onClick={reiniciarJuego}>Reiniciar Juego</button> : null}
@@ -216,16 +215,17 @@ const JuegoPreguntas = () => {
             {!gameStartedQ || gameOverQ || winQ ? null : <p className="bg-colorestxbg text-3xl border-2 p-2 border-black">Nivel: {levelCounterQ}</p>}
           </div>
         </div> : null}
-        {gameStartedQ ? <div className="flex w-full">
-          <div className="w-1/4">
-          </div>
-          <div className="w-3/4 flex justify-around mb-5">
-            {gameOverQ || winQ ? <button className="text-3xl bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" onClick={reiniciarJuego}>Reiniciar Juego</button> : null}
-            {gameStartedQ || gameOverQ || winQ ? null : <button className="text-3xl bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" onClick={reiniciarJuego}>Comenzar El Juego</button>}
-            {!gameStartedQ || gameOverQ || winQ ? null : (<h1 className="bg-colorestxbg text-3xl border-2 p-2 border-black">Tiempo Restante: {timerQ}</h1>)}
-            {!gameStartedQ || gameOverQ || winQ ? null : <p className="bg-colorestxbg text-3xl border-2 p-2 border-black">Nivel: {levelCounterQ}</p>}
-          </div>
-        </div> : null}
+        {gameStartedQ ?
+          <div className="flex justify-center w-full">
+            <div className=" hidden lg:flex lg:w-1/4">
+            </div>
+            <div className="w-3/4 flex justify-around mb-5 gap-10 lg:gap-0">
+              {gameOverQ || winQ ? <button className="text-3xl bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" onClick={reiniciarJuego}>Reiniciar Juego</button> : null}
+              {gameStartedQ || gameOverQ || winQ ? null : <button className="text-3xl bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" onClick={reiniciarJuego}>Comenzar El Juego</button>}
+              {!gameStartedQ || gameOverQ || winQ ? null : (<h1 className="bg-colorestxbg text-xl sm:text-2xl md:text-3xl border-2 p-2 border-black">Tiempo Restante: {timerQ}</h1>)}
+              {!gameStartedQ || gameOverQ || winQ ? null : <p className="bg-colorestxbg text-xl sm:text-2xl md:text-3xl border-2 p-2 border-black">Nivel: {levelCounterQ}</p>}
+            </div>
+          </div> : null}
         {gameOverQ && timerQ !== 0 ? <div className="flex flex-col">
           <h1 className="text-center bg-colorestxbg text-3xl border-2 p-2 border-black">Juego Finalizado, seleccionaste la respuesta incorrecta!</h1>
         </div> : gameOverQ && timerQ === 0 ? <div className="flex flex-col justify-center text-center">
@@ -236,21 +236,21 @@ const JuegoPreguntas = () => {
         </div> : null}
         {questions.filter((question, index) => !skippedQuestions.includes(index)).slice(currentQuestionIndex, currentQuestionIndex + 1).map((question) => (
           !gameOverQ && !winQ && (
-            <div key={question.id} className="flex flex-row gap-10 items-center justify-center w-full h-auto">
-              {gameStartedQ ? <div className="w-1/4 flex flex-col justify-center gap-5">
-                {!gameOverQ || !winQ ? <h1 className="text-center bg-colorestxbg text-3xl border-2 p-2 border-black">Comodines</h1> : null}
-                {!gameOverQ || !winQ ? <button disabled={fiftyUsed || !gameStartedQ} className={`text-3xl border-2 border-black hover:font-bold ${fiftyUsed ? 'opacity-50 pointer-events-none' : ''}`} onClick={handleFiftyClick}>50/50</button> : null}
-                {!gameOverQ || !winQ ? <button disabled={timeUsed || !gameStartedQ} className={`text-3xl border-2 border-black hover:font-bold ${timeUsed ? 'opacity-50 pointer-events-none' : ''}`} onClick={handleTimeClick}>Añadir Tiempo</button> : null}
-                {!gameOverQ || !winQ ? <button disabled={skippedUsed || !gameStartedQ} className={`text-3xl border-2 border-black hover:font-bold ${skippedUsed ? 'opacity-50 pointer-events-none' : ''}`} onClick={skipQuestion}>Saltar Pregunta</button> : null}
+            <div key={question.id} className="flex flex-col-reverse lg:flex-row gap-10 items-center justify-center w-full h-full">
+              {gameStartedQ ? <div className=" lg:w-1/4 flex flex-col justify-center p-5 bg-white gap-5">
+                {!gameOverQ || !winQ ? <h1 className="text-center bg-colorestxbgtext-xl sm:text-2xl md:text-3xl border-2 font-bold p-2 border-black">Comodines</h1> : null}
+                {!gameOverQ || !winQ ? <button disabled={fiftyUsed || !gameStartedQ} className={`text-xl sm:text-2xl md:text-3xl border-2 border-black hover:font-bold ${fiftyUsed ? 'opacity-50 pointer-events-none' : ''}`} onClick={handleFiftyClick}>50/50</button> : null}
+                {!gameOverQ || !winQ ? <button disabled={timeUsed || !gameStartedQ} className={`text-xl sm:text-2xl md:text-3xl border-2 border-black hover:font-bold ${timeUsed ? 'opacity-50 pointer-events-none' : ''}`} onClick={handleTimeClick}>Añadir Tiempo</button> : null}
+                {!gameOverQ || !winQ ? <button disabled={skippedUsed || !gameStartedQ} className={`text-xl sm:text-2xl md:text-3xl border-2 border-black hover:font-bold ${skippedUsed ? 'opacity-50 pointer-events-none' : ''}`} onClick={skipQuestion}>Saltar Pregunta</button> : null}
               </div> : null}
-              <div className="flex flex-col items-center justify-center w-3/4">
+              <div className="flex flex-col items-center justify-center w-full mt-5 lg:mt-0 lg:w-3/4">
                 {gameStartedQ ? (
-                  <h1 className="bg-colorestxbg text-center text-3xl border-2 p-2 mb-10 border-black">{question.pregunta}</h1>
+                  <h1 className="bg-colorestxbg text-center text-xl sm:text-2xl md:text-3xl border-2 p-2 mb-10 border-black">{question.pregunta}</h1>
                 ) : (
-                  <h1 className="bg-colorestxbg text-3xl w-60 h-10 mb-10"></h1>
+                  <h1 className="bg-colorestxbg text-xl sm:text-2xl md:text-3xl w-60 h-10 mb-10"></h1>
                 )}
                 {gameStartedQ ? (
-                  <div className="grid grid-cols-2 gap-48 text-center text-3xl">
+                  <div className="grid grid-cols-2 gap-28 md:gap-32 lg:gap-48 text-center text-xl sm:text-2xl md:text-3xl">
                     {shuffledAnswers.map((answer, index) => {
                       const isDisabled = disabledAnswers.includes(answer);
                       return (
@@ -266,7 +266,7 @@ const JuegoPreguntas = () => {
                     })}
                   </div>
                 ) : (
-                  <div className="grid grid-cols-2 gap-48 text-center text-3xl">
+                  <div className="grid grid-cols-2 gap-10 md:gap-48 text-center text-3xl">
                     <h1 className="cursor-normal bg-colorestxbg w-40 h-20 p-5"></h1>
                     <h1 className="cursor-normal bg-colorestxbg w-40 h-20 p-5"></h1>
                     <h1 className="cursor-normal bg-colorestxbg w-40 h-20 p-5"></h1>
