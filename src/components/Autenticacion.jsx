@@ -45,7 +45,7 @@ const Autenticacion = () => {
 
     return (
         <>
-            <div className="flex justify-center flex-row gap-5">
+            <div className=" flex-col sm:flex-row  flex justify-center gap-5">
                 <div className="flex flex-col">
                     <button onClick={signInGoogle} className="border border-black flex items-center px-3 rounded py-1">
                         <FcGoogle className="mr-2" />

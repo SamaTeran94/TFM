@@ -27,7 +27,8 @@ const SingleCard = ({ card,
                 </button>
                 <button
                     disabled={!gameStarted}
-                    className={`${!gameStarted ? 'block w-32 h-32 rounded-md border-2 border-white cursor-default bg-black' : 'block w-32 h-32 rounded-md border-2 border-white cursor-pointer bg-black'}`}
+                    className={`${!gameStarted ? 'block h-16 w-16 sm:w-28 sm:h-28 md:w-32 md:h-32 rounded-md border-2 border-white cursor-default bg-black' :
+                        'block w-16 h-16 sm:w-24 sm:h-24 md:w-32 md:h-32 rounded-md border-2 border-white cursor-pointer bg-black'}`}
                     onClick={handleClick}
                     style={{
                         transform: `rotateY(${flipped ? '90deg' : '0deg'})`,

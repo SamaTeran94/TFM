@@ -6,12 +6,14 @@ import { IoSchoolOutline } from "react-icons/io5";
 const Card = ({ title, description, image, email }) => {
 
     return (
-        <div className="bg-white shadow-lg rounded-lg overflow-hidden">
+        <div className="bg-white h-auto w-3/4 sm:w-auto sm:h-auto shadow-lg rounded-lg overflow-hidden">
             {image && (
                 <img
                     src={image}
                     alt={title}
-                    className="w-full h-96 object-cover "
+                    height='400'
+                    width='400'
+                    className="sm:w-96"
                 />
             )}
             <div className="p-4">

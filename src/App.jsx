@@ -23,7 +23,7 @@ function App() {
           <Route
             index
             element={
-              <Suspense fallback={<div>Loading...</div>}>
+              <Suspense fallback={<div>Cargando...</div>}>
                 <Home />
               </Suspense>
             }
@@ -31,7 +31,7 @@ function App() {
           <Route
             path='colores'
             element={
-              <Suspense fallback={<div>Loading...</div>}>
+              <Suspense fallback={<div>Cargando...</div>}>
                 <ColoresContextProvider>
                   <JuegoColores
                   />
@@ -42,7 +42,7 @@ function App() {
           <Route
             path='preguntas'
             element={
-              <Suspense fallback={<div>Loading...</div>}>
+              <Suspense fallback={<div>Cargando...</div>}>
                 <PreguntasContextProvider>
                   <JuegoPreguntas
                   />
@@ -53,7 +53,7 @@ function App() {
           <Route
             path='memoria'
             element={
-              <Suspense fallback={<div>Loading...</div>}>
+              <Suspense fallback={<div>Cargando...</div>}>
                 <MemoriaContextProvider>
                   <JuegoMemoria
                   />
@@ -64,7 +64,7 @@ function App() {
           <Route
             path='nosotros'
             element={
-              <Suspense fallback={<div>Loading...</div>}>
+              <Suspense fallback={<div>Cargando...</div>}>
                 <Nosotros />
               </Suspense>
             }

@@ -1,27 +1,43 @@
 /* eslint-disable react/prop-types */
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Link, Outlet, useLocation } from 'react-router-dom';
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const [isTop, setIsTop] = useState(true);
   const location = useLocation(); // Access the current location
 
   const toggleMenu = () => {
     setIsOpen(!isOpen);
   };
 
+  useEffect(() => {
+    const handleScroll = () => {
+      const scrollY = window.scrollY;
+
+      setIsTop(scrollY === 0);
+      setIsOpen(scrollY >= window.innerHeight / 2);
+    };
+
+    window.addEventListener('scroll', handleScroll);
+
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, []);
+
   return (
     <>
-      <nav className="bg-navbar ">
+      <nav className={`bg-navbar transition-transform duration-300 ease-in-out ${isTop ? 'translate-y-0' : '-translate-y-full '}`}>
         <div className="container mx-auto px-4">
           <div className="flex items-center justify-between h-16">
             <div className="flex items-center">
-              <Link to='/'><img src="../../images/LOGO-UNIR.png" width={200} height={200} alt="Image" /></Link>
+              <Link to='/'><img src="https://firebasestorage.googleapis.com/v0/b/tfm-unir-fb71e.appspot.com/o/images%2FUnir.png?alt=media&token=3c24f283-1058-4ab4-b07a-fe22430cc179" width={200} height={200} alt="Image" /></Link>
             </div>
             <div className="hidden lg:flex md:space-x-4">
               <Link
                 to="/colores"
-                className={`text-gray-700 text-2xl hover:font-bold ${location.pathname === '/colores' ? 'bg-blue-100 p-1' : ''}`}
+                className={`text-gray-700 text-2xl hover:font-bold ${location.pathname === '/colores' ? 'bg-blue-100 p-1 w-full' : ''}`}
               >
                 Juego Colores
               </Link>
@@ -67,7 +83,7 @@ const Navbar = () => {
             </div>
           </div>
           {isOpen && (
-            <div className="mt-2 flex flex-col gap-5">
+            <div className="mt-2 flex flex-col gap-5 pb-5">
               <Link
                 to="/colores"
                 className={`text-gray-700 text-2xl hover:font-bold ${location.pathname === '/colores' ? 'bg-blue-100 p-1' : ''}`}

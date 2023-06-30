@@ -250,7 +250,7 @@ const JuegoPreguntas = () => {
                   <h1 className="bg-colorestxbg text-xl sm:text-2xl md:text-3xl w-60 h-10 mb-10"></h1>
                 )}
                 {gameStartedQ ? (
-                  <div className="grid grid-cols-2 gap-28 md:gap-32 lg:gap-48 text-center text-xl sm:text-2xl md:text-3xl">
+                  <div className="grid grid-cols-2 gap-10 sm:gap-28 md:gap-32 lg:gap-48 text-center text-xl sm:text-2xl md:text-3xl">
                     {shuffledAnswers.map((answer, index) => {
                       const isDisabled = disabledAnswers.includes(answer);
                       return (
@@ -267,10 +267,10 @@ const JuegoPreguntas = () => {
                   </div>
                 ) : (
                   <div className="grid grid-cols-2 gap-10 md:gap-48 text-center text-3xl">
-                    <h1 className="cursor-normal bg-colorestxbg w-40 h-20 p-5"></h1>
-                    <h1 className="cursor-normal bg-colorestxbg w-40 h-20 p-5"></h1>
-                    <h1 className="cursor-normal bg-colorestxbg w-40 h-20 p-5"></h1>
-                    <h1 className="cursor-normal bg-colorestxbg w-40 h-20 p-5"></h1>
+                    <h1 className="cursor-normal bg-colorestxbg w-36 h-20 sm:w-40 sm:h-20"></h1>
+                    <h1 className="cursor-normal bg-colorestxbg w-36 h-20 sm:w-40 sm:h-20"></h1>
+                    <h1 className="cursor-normal bg-colorestxbg w-36 h-20 sm:w-40 sm:h-20"></h1>
+                    <h1 className="cursor-normal bg-colorestxbg w-36 h-20 sm:w-40 sm:h-20"></h1>
                   </div>
                 )}
               </div>
@@ -280,14 +280,14 @@ const JuegoPreguntas = () => {
       </section>
 
       <section className="flex flex-col items-center place-content-center content-center justify-evenly h-screen">
-        <div className=" flex flex-col gap-5 items-center bg-gray-200 w-1/2 py-10">
-          <h1 className="text-2xl">Crea tus propias preguntas</h1>
+        <div className=" flex flex-col gap-5 items-center bg-gray-200 w-5/6 sm:w-3/4 md:w-3/4 lg:w-1/2 px-10 py-10">
+          <h1 className=" text-2xl text-center">Crea tus propias preguntas</h1>
           <Autenticacion />
         </div>
-        <form onSubmit={handleSubmitQuestion} className="flex flex-col bg-gray-500 p-10 gap-5 h-fit w-1/2 ">
+        <form onSubmit={handleSubmitQuestion} className="flex flex-col bg-gray-500 p-10 gap-5 h-auto w-5/6 sm:w-3/4 md:w-1/2 ">
           <input
             required
-            title="Question must have at least 10 characters"
+            title="La pregunta debe tener al menos 10 caracteres"
             value={newQuestion}
             placeholder="Pregunta..."
             onChange={(e) => {
@@ -297,8 +297,8 @@ const JuegoPreguntas = () => {
             className={`border border-gray-300 rounded-md px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500 ${questionError ? 'border-red-500' : ''}`}
           />
           {questionError && <label className="text-red-500">La pregunta debe tener por lo menos 10 caracteres</label>}
-          <input required value={correctAnswer} placeholder="Respuesta Correcta..." onChange={(e) => setCorrectAnswer(e.target.value)} className="border border-gray-300 rounded-md px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500" />
-          <input required value={incorrectAnswers} placeholder="Respuestas Incorrectas separadas por comas..." onChange={(e) => {
+          <input title="Una respuesta correcta" required value={correctAnswer} placeholder="Respuesta Correcta..." onChange={(e) => setCorrectAnswer(e.target.value)} className="border border-gray-300 rounded-md px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500" />
+          <input title="Tres respuesta incorrectas separadas por comas" required value={incorrectAnswers} placeholder="Respuestas Incorrectas separadas por comas..." onChange={(e) => {
             setIncorrectAnswers(e.target.value);
             setIncorrectAnswersErrorNumber(false); // Reset the error state when the input changes
             setIncorrectAnswersErrorCommas(false); // Reset the error state when the input changes

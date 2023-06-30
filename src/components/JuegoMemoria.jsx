@@ -19,9 +19,9 @@ const JuegoMemoria = () => {
 
     return (
         <>
-            <div className=" flex justify-center flex-col py-10 sm:py-0 bg-slate-300 sm:h-screen gap-5">
+            <div className=" flex justify-center flex-col py-10 sm:py-0 bg-slate-300 h-screen gap-5">
                 {cardsMatched ? null : <div className="flex flex-col w-full items-center">
-                    <h1 className="text-center bg-colorestxbg text-3xl border-2 p-2 border-black">Encuentra los pares</h1>
+                    <h1 className="text-center bg-colorestxbg text-3xl border-2 p-2 mt-0 sm:mt-10 border-black">Encuentra los pares</h1>
                 </div>}
                 <div className=" flex flex-row justify-center gap-5 w-full ">
                     {cardsMatched ? <h1 className="text-center bg-colorestxbg text-3xl border-2 p-2 border-black">Encontrar todos los pares te tomo {turns} turnos</h1> : null}
@@ -30,8 +30,8 @@ const JuegoMemoria = () => {
                     {cardsMatched ? null : (gameStarted && <h1 className="text-center bg-colorestxbg text-3xl border-2 p-2 border-black">Turnos: {turns}</h1>)}
                 </div>
                 <div className="w-full flex flex-col items-center justify-center">
-                    <div className="w-full md:w-3/4 bg-red-200">
-                        <div className="grid grid-cols-3 sm:grid-cols-4 gap-5 justify-items-center">
+                    <div className="w-full md:w-3/4">
+                        <div className="grid grid-cols-4 gap-5 justify-items-center">
                             {cards.map((card) => (
                                 <SingleCard
                                     key={card.id}

@@ -14,14 +14,14 @@ const MemoriaContextProvider = ({ children }) => {
     const [gameStarted, setGameStarted] = useState(false)
 
     const cardImages = [
-        { icon: <FaBlackTie size={128} color='blue' />, matched: false },
-        { icon: <FaCanadianMapleLeaf size={128} color='blue' />, matched: false },
-        { icon: <FaDiaspora size={128} color='blue' />, matched: false },
-        { icon: <FaDelicious size={128} color='blue' />, matched: false },
-        { icon: <FaDribbble size={128} color='blue' />, matched: false },
-        { icon: <FaEnvira size={128} color='blue' />, matched: false },
-        { icon: <FaConfluence size={128} color='blue' />, matched: false },
-        { icon: <FaFontAwesomeFlag size={128} color='blue' />, matched: false },
+        { icon: <FaBlackTie className='text-6xl sm:text-8xl md:text-9xl' color='blue' />, matched: false },
+        { icon: <FaCanadianMapleLeaf className='text-6xl sm:text-8xl md:text-9xl' color='blue' />, matched: false },
+        { icon: <FaDiaspora className='text-6xl sm:text-8xl md:text-9xl' color='blue' />, matched: false },
+        { icon: <FaDelicious className='text-6xl sm:text-8xl md:text-9xl' color='blue' />, matched: false },
+        { icon: <FaDribbble className='text-6xl sm:text-8xl md:text-9xl' color='blue' />, matched: false },
+        { icon: <FaEnvira className='text-6xl sm:text-8xl md:text-9xl' color='blue' />, matched: false },
+        { icon: <FaConfluence className='text-6xl sm:text-8xl md:text-9xl' color='blue' />, matched: false },
+        { icon: <FaFontAwesomeFlag className='text-6xl sm:text-8xl md:text-9xl' color='blue' />, matched: false },
     ]
 
     // Compara las dos cartas seleccionadas en el juego de memoria
